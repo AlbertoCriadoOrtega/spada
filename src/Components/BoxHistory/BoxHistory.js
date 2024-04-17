@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./BoxHistory.css";
 
 const texts = [
   "En la década de 1950, un equipo lucha con pasión y pocos recursos en carreras improvisadas, ganando seguidores leales.",
@@ -32,7 +33,7 @@ export default function BoxHistory({ decada }) {
       case "90":
         cambiarTexto(texts[4]);
         break;
-      case "2000":
+      case "00":
         cambiarTexto(texts[5]);
         break;
       case "10":
@@ -50,7 +51,7 @@ export default function BoxHistory({ decada }) {
     <>
       <div className="col-12 d-flex justify-content-center">
         <div className="col-10 text-light text-center">
-          <h4>{texto}</h4>
+          <p id="decada">{texto}</p>
         </div>
       </div>
     </>

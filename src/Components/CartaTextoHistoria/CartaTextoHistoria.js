@@ -8,6 +8,7 @@ export default class CartaTextoHistoria extends Component {
   render() {
     const { idDiv } = this.props;
     const { textoInterno } = this.props;
+    const { textoParrafo } = this.props;
     const { enlaceScroll } = this.props;
 
     return (
@@ -21,7 +22,7 @@ export default class CartaTextoHistoria extends Component {
                 </h1>
               </div>
               <div style={{ height: "45vh" }}>
-                <BoxHistory decada="10" />
+                <BoxHistory decada={textoParrafo} />
               </div>
               <div className="col-12 d-flex justify-content-center">
                 <div className="col-3 mt-auto">
