@@ -1,0 +1,28 @@
+#background {
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.custom-row {
+  min-height: 100vh;
+}
+
+.custom-title {
+  min-height: 100vh;
+
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.9) 90%
+    ),
+    url("../../Assets/images/AboutUs/test.jpg");
+
+  background-size: cover;
+}
+
+#textoTitulo {
+  color: white;
+  font-size: 10vw;
+  text-shadow: #0c1825 0px 5px 19px;
+}

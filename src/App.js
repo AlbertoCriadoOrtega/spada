@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import CartaTituloHistoria from "./Components/CartaTituloHistoria/CartaTituloHistoria";
+import CartaTextoHistoria from "./Components/CartaTextoHistoria/CartaTextoHistoria";
+import Navegacion from "./Layouts/Header/Header";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navegacion />
+      <CartaTituloHistoria
+        idDiv=""
+        textoInterno="Nuestra historia"
+        enlaceScroll="#11"
+      />
+      <CartaTextoHistoria idDiv="11" textoInterno="2010" enlaceScroll="#" />
+    </>
   );
 }
 
