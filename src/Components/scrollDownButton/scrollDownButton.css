@@ -5,6 +5,7 @@
 /* <main-style> ============================ */
 .main__scroll-text {
   color: white;
+  font-size: 4vw;
 }
 
 .main__action .main__scroll-box {

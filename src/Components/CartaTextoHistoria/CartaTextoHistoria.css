@@ -26,3 +26,11 @@
   font-size: 10vw;
   text-shadow: #0c1825 0px 5px 19px;
 }
+
+#textoParrafo {
+  min-height: 52vh;
+}
+
+#textoFin {
+  font-size: 5vw;
+}

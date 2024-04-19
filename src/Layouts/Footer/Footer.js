@@ -29,7 +29,7 @@ export default class Footer extends Component {
               </a>
             </div>
           </section>
-          <div className="container p-4 pb-0">
+          <div className="container p-4 pb-0 d-none d-md-block">
             <section>
               <form action="">
                 <div className="row d-flex justify-content-center">

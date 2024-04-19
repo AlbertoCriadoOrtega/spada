@@ -6,10 +6,8 @@ import "./CartaTextoHistoria.css";
 
 export default class CartaTextoHistoria extends Component {
   render() {
-    const { idDiv } = this.props;
-    const { textoInterno } = this.props;
-    const { textoParrafo } = this.props;
-    const { enlaceScroll } = this.props;
+    const { idDiv, textoInterno, textoParrafo, enlaceScroll, scroll } =
+      this.props;
 
     return (
       <>
@@ -21,13 +19,19 @@ export default class CartaTextoHistoria extends Component {
                   {textoInterno}
                 </h1>
               </div>
-              <div style={{ height: "45vh" }}>
+              <div id="textoParrafo">
                 <BoxHistory decada={textoParrafo} />
               </div>
               <div className="col-12 d-flex justify-content-center">
-                <div className="col-3 mt-auto">
-                  <ScrollDownButton href={enlaceScroll}></ScrollDownButton>
-                </div>
+                {scroll ? (
+                  <div className="col-3 mt-auto">
+                    <ScrollDownButton href={enlaceScroll}></ScrollDownButton>
+                  </div>
+                ) : (
+                  <a className="text-white mt-5" id="textoFin" href="#">
+                    Volver al principio
+                  </a>
+                )}
               </div>
             </div>
           </div>

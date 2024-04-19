@@ -9,22 +9,7 @@ export class Header extends Component {
       <>
         <header>
           <nav className="nav" id="nav">
-            <div className="col col-md-4 d-flex justify-content-start">
-              <div
-                className="nav-link d-flex align-items-center text-light text-decoration-none ps-4"
-                href=""
-                role="button"
-              >
-                <i className="bi bi-person-fill fs-3"></i>
-                <a
-                  href=""
-                  className="nav-link d-flex align-items-center text-light text-decoration-none ps-2"
-                >
-                  <i className="bi bi-cart fs-3"></i>
-                </a>
-              </div>
-            </div>
-            <div className="col col-md-4 d-flex justify-content-center">
+            <div className="col col-md-8 d-flex align-items-center">
               <img
                 src={LogoFullScreen}
                 alt=""
@@ -33,7 +18,7 @@ export class Header extends Component {
               <img
                 src={LogoMovil}
                 alt=""
-                className="img-fluid w-50 rounded-circle d-block d-md-none"
+                className="img rounded-circle d-block d-md-none Logo"
               />
             </div>
             <div className="col col-md-4 d-flex justify-content-end">
@@ -103,17 +88,6 @@ export class Header extends Component {
                   </a>
                 </li>
               </ul>
-            </div>
-          </div>
-
-          <div className="collapse pt-2 pb-2 bg-dark" id="collapseExample">
-            <div className="row col-12 d-flex">
-              <div className="col-6 d-flex justify-content-center">
-                <button className="btn btn-color text-light">Log in</button>
-              </div>
-              <div className="col-6 d-flex justify-content-center">
-                <button className="btn btn-color text-light">Sign up</button>
-              </div>
             </div>
           </div>
         </header>
