@@ -1,10 +1,11 @@
 import "./App.css";
-import OurHistory from "./views/OurHistory/OurHistory";
+import CarImage from "./Components/CarImage/CarImage";
 
 function App() {
   return (
     <>
-      <OurHistory></OurHistory>
+      <div></div>
+      <CarImage rutaImagen="2" textoAlternativo="Car"></CarImage>
     </>
   );
 }
