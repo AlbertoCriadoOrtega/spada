@@ -5,13 +5,12 @@ import IMG from "../../Assets/images/AboutUs/test.jpg";
 function CarImage({ textoAlternativo }) {
   return (
     <>
-      <div className="gradiente">
-        <img
-          src={IMG}
-          alt={textoAlternativo}
-          className="img-fluid w-100 gradiente"
-        />
-      </div>
+      <div
+        className="gradiente"
+        style={{
+          backgroundImage: `url("${IMG}"), radial-gradient(circle, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))`,
+        }}
+      ></div>
     </>
   );
 }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Header.css";
-import LogoFullScreen from "./image/logo.png";
+import LogoFullScreen from "../../Assets/LogoPC.svg";
 import LogoMovil from "./image/logoSVG.svg";
 
 export class Header extends Component {
@@ -13,23 +13,23 @@ export class Header extends Component {
               <img
                 src={LogoFullScreen}
                 alt=""
-                className="img-fluid w-25 rounded-circle d-md-block d-none"
+                className="img-fluid w-25 rounded-circle d-md-block d-none Logo"
               />
               <img
                 src={LogoMovil}
                 alt=""
-                className="img rounded-circle d-block d-md-none Logo"
+                className="img rounded-circle d-block d-md-none LogoMovil"
               />
             </div>
             <div className="col col-md-4 d-flex justify-content-end">
-              <a
-                className="nav-link d-flex align-items-center text-light text-decoration-none pe-4"
+              <p
+                className="nav-link d-flex align-items-center text-light text-decoration-none pe-4 mb-0"
                 data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasRight"
                 aria-controls="offcanvasRight"
               >
                 <i className="bi bi-list fs-1"></i>
-              </a>
+              </p>
             </div>
           </nav>
 

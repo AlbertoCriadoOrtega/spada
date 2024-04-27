@@ -1,11 +1,14 @@
 import React, { Component } from "react";
-import videoBG from "../../Assets/video/VideoBG.mp4";
+import "./VideoFront.css";
+import VIDEO from "../../Assets/videos/VideoBG.mp4";
 
 export default class VideoFront extends Component {
   render() {
     return (
       <div id="videoFrontDiv">
-        <video id="videoFront" src={videoBG} autoPlay loop muted></video>
+        <video id="videoFront" autoPlay loop muted>
+          <source src={VIDEO} type="video/mp4"></source>
+        </video>
       </div>
     );
   }

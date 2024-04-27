@@ -1,11 +1,10 @@
 import "./App.css";
-import CarImage from "./Components/CarImage/CarImage";
+import Home from "./views/Home/Home";
 
 function App() {
   return (
     <>
-      <div></div>
-      <CarImage rutaImagen="2" textoAlternativo="Car"></CarImage>
+      <Home></Home>
     </>
   );
 }
