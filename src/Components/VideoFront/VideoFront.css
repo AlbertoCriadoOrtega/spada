@@ -9,3 +9,14 @@
   width: 100%;
   object-fit: cover;
 }
+
+#tituloHome {
+  color: hsl(199, 74%, 53%);
+  margin-top: -12vh;
+  margin-bottom: 0;
+  font-weight: 900;
+  text-shadow: 0 0 20px hsl(0, 0%, 60%);
+  letter-spacing: 3px;
+  background-color: #0c1825;
+  font-size: clamp(2rem, 1.3028rem + 2.6519vw, 5rem);
+}

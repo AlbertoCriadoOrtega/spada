@@ -1,9 +1,47 @@
-#tituloHome {
+#cartas {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(12, 24, 37, 1) 67%
+  );
+}
+
+#textoPresentacion {
+  font-size: clamp(1.5rem, 0.4375rem + 3vw, 2.5rem);
+}
+
+.Enfasis {
   color: hsl(199, 74%, 53%);
-  margin-top: -10vh;
-  font-weight: 900;
-  text-shadow: 0 0 20px hsl(0, 0%, 60%);
-  letter-spacing: 3px;
-  border-right: 4px solid #000;
-  font-size: clamp(1.6rem, 1.3028rem + 2.6519vw, 1rem);
+}
+
+#separador {
+  height: 5px;
+  background-color: whitesmoke;
+}
+
+.eyeCatch {
+  font-size: clamp(2rem, 0.5rem + 8vw, 6rem);
+  font-weight: bold; /* Grosor de la letra */
+  color: transparent; /* Color de la letra transparente */
+  background-image: url("https://images.pexels.com/photos/122458/pexels-photo-122458.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); /* Ruta de la imagen */
+  background-size: cover; /* Ajusta el tamaño de la imagen */
+  background-clip: text; /* Establece el texto como la máscara de la imagen */
+  -webkit-background-clip: text;
+}
+
+.eyeCatch2 {
+  font-size: clamp(1.5rem, 0.9375rem + 3vw, 3rem);
+  color: white;
+}
+
+#enviar {
+  background-color: #0c1825;
+  border: white 2px solid;
+  color: #fff;
+}
+
+#enviar:hover {
+  background-color: #e4ae2d;
+  color: #000;
 }

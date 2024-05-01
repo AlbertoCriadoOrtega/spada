@@ -1,0 +1,14 @@
+.slider {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.slider-inner {
+  display: flex;
+  transition: transform 0.5s ease;
+  will-change: transform;
+}
+
+.slider-item {
+  flex-shrink: 0;
+}
