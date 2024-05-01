@@ -40,15 +40,9 @@ export class Header extends Component {
             aria-labelledby="offcanvasRightLabel"
           >
             <div className="offcanvas-header">
-              <h5
-                className="offcanvas-title fw-bold ps-3"
-                id="offcanvasRightLabel"
-              >
-                Menu
-              </h5>
               <button
                 type="button"
-                className="btn-close"
+                className="btn-close fs-3 text-dark fw-bold"
                 data-bs-dismiss="offcanvas"
                 aria-label="Close"
               ></button>
@@ -58,7 +52,7 @@ export class Header extends Component {
                 <li className="list-group-item">
                   <a
                     href=""
-                    className="w-100 text-dark link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+                    className="w-100 text-dark link-underline link-underline-opacity-0 link-underline-opacity-75-hover fs-2"
                   >
                     OUR CARS
                   </a>
@@ -66,7 +60,7 @@ export class Header extends Component {
                 <li className="list-group-item">
                   <a
                     href=""
-                    className="w-100 text-dark link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+                    className="w-100 text-dark link-underline link-underline-opacity-0 link-underline-opacity-75-hover fs-2"
                   >
                     SPARE STORE
                   </a>
@@ -74,7 +68,7 @@ export class Header extends Component {
                 <li className="list-group-item">
                   <a
                     href=""
-                    className="w-100 text-dark link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+                    className="w-100 text-dark link-underline link-underline-opacity-0 link-underline-opacity-75-hover fs-1"
                   >
                     OUR TEAM
                   </a>
@@ -82,12 +76,26 @@ export class Header extends Component {
                 <li className="list-group-item">
                   <a
                     href=""
-                    className="w-100 text-dark link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+                    className="w-100 text-dark link-underline link-underline-opacity-0 link-underline-opacity-75-hover fs-2"
                   >
                     OUR HISTORY
                   </a>
                 </li>
               </ul>
+            </div>
+            <div className="offcanvas-footer mb-3">
+              <a href="" className="fs-1 p-3  text-decoration-none text-dark">
+                <i className="bi bi-facebook"></i>
+              </a>
+              <a href="" className="fs-1 p-3  text-decoration-none text-dark">
+                <i className="bi bi-instagram"></i>
+              </a>
+              <a href="" className="fs-1 p-3  text-decoration-none text-dark">
+                <i className="bi bi-twitter-x"></i>
+              </a>
+              <a href="" className="fs-1 p-3  text-decoration-none text-dark">
+                <i className="bi bi-youtube"></i>
+              </a>
             </div>
           </div>
         </header>

@@ -11,8 +11,8 @@ export default function Home() {
       <Header />
       <VideoFront />
       <div className="row col-12 ms-0">
-        <h2 id="tituloHome" className="col-12 text-center fs-1">
-          <p className="m-0"> ALEA ACTA EST</p>
+        <h2 id="tituloHome" className="col-12 text-center">
+          <p className="m-0">ESPÍRITU GANADOR</p>
         </h2>
       </div>
       <div className="row col-12"></div>
