@@ -1,0 +1,4 @@
+#parteRecambio {
+  max-width: calc(47% - 0.5rem);
+  min-width: calc(47% - 0.5rem);
+}
