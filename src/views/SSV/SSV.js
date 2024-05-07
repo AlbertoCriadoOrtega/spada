@@ -79,7 +79,7 @@ export default function SSV() {
     spotLight5.shadow.bias = -0.0001;
     scene.add(spotLight5);
 
-    const loader = new GLTFLoader().setPath("/SSV/");
+    const loader = new GLTFLoader().setPath("/SS3/");
     loader.load(
       "scene.gltf",
       (gltf) => {

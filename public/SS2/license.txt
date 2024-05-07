@@ -1,0 +1,11 @@
+Model Information:
+* title:	Ford GT40 Mk II nr1
+* source:	https://sketchfab.com/3d-models/ford-gt40-mk-ii-nr1-ae378554e5214719842e476a19cd26af
+* author:	Julian (https://sketchfab.com/julianrijken)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Ford GT40 Mk II nr1" (https://sketchfab.com/3d-models/ford-gt40-mk-ii-nr1-ae378554e5214719842e476a19cd26af) by Julian (https://sketchfab.com/julianrijken) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -51,7 +51,7 @@ export class Header extends Component {
               <ul className="list-group list-group-flush fw-bold fs-4">
                 <li className="list-group-item">
                   <a
-                    href=""
+                    href="/ssv"
                     className="w-100 text-dark link-underline link-underline-opacity-0 link-underline-opacity-75-hover fs-2"
                   >
                     OUR CARS
@@ -59,7 +59,7 @@ export class Header extends Component {
                 </li>
                 <li className="list-group-item">
                   <a
-                    href=""
+                    href="/store"
                     className="w-100 text-dark link-underline link-underline-opacity-0 link-underline-opacity-75-hover fs-2"
                   >
                     SPARE STORE
@@ -68,14 +68,14 @@ export class Header extends Component {
                 <li className="list-group-item">
                   <a
                     href=""
-                    className="w-100 text-dark link-underline link-underline-opacity-0 link-underline-opacity-75-hover fs-1"
+                    className="w-100 text-dark link-underline link-underline-opacity-0 link-underline-opacity-75-hover fs-2"
                   >
                     OUR TEAM
                   </a>
                 </li>
                 <li className="list-group-item">
                   <a
-                    href=""
+                    href="/our-history"
                     className="w-100 text-dark link-underline link-underline-opacity-0 link-underline-opacity-75-hover fs-2"
                   >
                     OUR HISTORY
