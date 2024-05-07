@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/spada/static/css/main.86f6b958.css",
+    "main.js": "/spada/static/js/main.70b13365.js",
+    "static/js/453.bb6c6435.chunk.js": "/spada/static/js/453.bb6c6435.chunk.js",
+    "static/media/pexels-georgesultan-1471803.jpg": "/spada/static/media/pexels-georgesultan-1471803.a958673ee7609560c979.jpg",
+    "static/media/VideoBG.mp4": "/spada/static/media/VideoBG.1a1dc020f84e6d337291.mp4",
+    "static/media/SignUpFoto.jpg": "/spada/static/media/SignUpFoto.307fa0f11d70b038fdf3.jpg",
+    "static/media/test.jpg": "/spada/static/media/test.3f051cd4f9b9241c17d5.jpg",
+    "static/media/img3.jpg": "/spada/static/media/img3.71a9de53f24c9cf11323.jpg",
+    "static/media/logoSVG.svg": "/spada/static/media/logoSVG.198ae740215ff9b247acfe8e14155b72.svg",
+    "static/media/FuturaPTBold.otf": "/spada/static/media/FuturaPTBold.b22b8109a56a2445c366.otf",
+    "static/media/LogoPC.svg": "/spada/static/media/LogoPC.32e24827a46af47a39277070fd1e3b45.svg",
+    "index.html": "/spada/index.html",
+    "main.86f6b958.css.map": "/spada/static/css/main.86f6b958.css.map",
+    "main.70b13365.js.map": "/spada/static/js/main.70b13365.js.map",
+    "453.bb6c6435.chunk.js.map": "/spada/static/js/453.bb6c6435.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.86f6b958.css",
+    "static/js/main.70b13365.js"
+  ]
+}
