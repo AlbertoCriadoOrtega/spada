@@ -8,19 +8,22 @@ import OurHistory from "./views/OurHistory/OurHistory";
 import Store from "./views/Store/Store";
 import User from "./views/User/User";
 import SSV from "./views/SSV/SSV";
+import Cars from "./views/Cars/Cars";
+import OurTeam from "./views/OurTeam/OurTeam";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/our-history" element={<OurHistory />} />
-        <Route path="/store" element={<Store />} />
-        <Route path="/user" element={<User />} />
-        <Route path="/login" element={<LogIn />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/historia" element={<OurHistory />} />
+        <Route path="/tienda" element={<Store />} />
+        <Route path="/usuario" element={<User />} />
+        <Route path="/registro" element={<LogIn />} />
+        <Route path="/iniciar-sesion" element={<SignUp />} />
         <Route path="/ssv" element={<SSV />} />
-        {/* Add more routes as needed for other views */}
+        <Route path="/coches" element={<Cars />} />
+        <Route path="/equipo" element={<OurTeam />} />
       </Routes>
     </Router>
   );

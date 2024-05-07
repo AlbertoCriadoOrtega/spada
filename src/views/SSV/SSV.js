@@ -3,7 +3,7 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
-export default function SSV() {
+const SSV = () => {
   useEffect(() => {
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -79,7 +79,7 @@ export default function SSV() {
     spotLight5.shadow.bias = -0.0001;
     scene.add(spotLight5);
 
-    const loader = new GLTFLoader().setPath("/SS3/");
+    const loader = new GLTFLoader().setPath("/SSV/");
     loader.load(
       "scene.gltf",
       (gltf) => {
@@ -122,5 +122,21 @@ export default function SSV() {
     };
   }, []);
 
-  return null;
-}
+  return (
+    <>
+      <a
+        href="/"
+        style={{
+          position: "absolute",
+          top: "20px",
+          left: "20px",
+          color: "white",
+        }}
+      >
+        <i className="bi bi-arrow-left">VOLVER</i>
+      </a>
+    </>
+  );
+};
+
+export default SSV;
