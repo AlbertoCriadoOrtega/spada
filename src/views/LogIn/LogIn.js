@@ -10,7 +10,7 @@ export default function LogIn() {
       <div className="d-flex justify-content-center">
         <div className="row mt-5 mb-5 col-12 col-md-10 col-lg-6 ps-4 pe-4">
           <div className="login-container col-12">
-            <h2 className="text-center mb-4">Crar cuenta</h2>
+            <h2 className="text-center mb-4">Inicio de Sesión</h2>
             <form>
               <div className="form-group">
                 <label htmlFor="username" className="ps-3">
