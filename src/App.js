@@ -20,8 +20,8 @@ function App() {
         <Route path="/historia" element={<OurHistory />} />
         <Route path="/tienda" element={<Store />} />
         <Route path="/usuario" element={<User />} />
-        <Route path="/registro" element={<LogIn />} />
-        <Route path="/iniciar-sesion" element={<SignUp />} />
+        <Route path="/iniciar-sesion" element={<LogIn />} />
+        <Route path="/registro" element={<SignUp />} />
         <Route path="/ssv" element={<SSV />} />
         <Route path="/coches" element={<Cars />} />
         <Route path="/equipo" element={<OurTeam />} />

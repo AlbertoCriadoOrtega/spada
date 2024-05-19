@@ -7,7 +7,7 @@ export default class Footer extends Component {
       <>
         <footer className="text-center text-white" id="footer">
           <section className="p-4 pb-0">
-            <h2>Follow us in social media</h2>
+            <h2 className="text-uppercase">Siguenos en redes</h2>
             <div className="row d-flex justify-content-center">
               <a
                 href="http://localhost:8000/Game"
@@ -29,44 +29,6 @@ export default class Footer extends Component {
               </a>
             </div>
           </section>
-          <div className="container p-4 pb-0 d-none d-md-block">
-            <section>
-              <form action="">
-                <div className="row d-flex justify-content-center">
-                  <div className="col-auto">
-                    <p className="pt-2">
-                      <strong className="text-light">
-                        Sign up for our newsletter
-                      </strong>
-                    </p>
-                  </div>
-                  <div className="col-md-5 col-12">
-                    <div className="form-outline form-white mb-4">
-                      <input
-                        type="email"
-                        id="form5Example2"
-                        className="form-control"
-                      />
-                      <label
-                        className="form-label text-light mt-2"
-                        htmlFor="form5Example2"
-                      >
-                        Email address
-                      </label>
-                    </div>
-                  </div>
-                  <div className="col-auto">
-                    <button
-                      type="submit"
-                      className="btn btn-outline-light mb-4"
-                    >
-                      Subscribe
-                    </button>
-                  </div>
-                </div>
-              </form>
-            </section>
-          </div>
 
           <div className="text-center p-3 text-light" id="copyright">
             © 2024 Copyright:&nbsp;

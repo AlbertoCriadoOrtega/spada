@@ -8,7 +8,7 @@ export default function Cars() {
   return (
     <>
       <Header></Header>
-      <div className="row fondo pt-5">
+      <div className="col fondo pt-5">
         <div className="col-12 text-center">
           <h1 className="Enfasis text-uppercase Enfasis" id="tituloCoches">
             Nuestros coches
@@ -24,7 +24,7 @@ export default function Cars() {
               potencia={196}
               peso={750}
               velocidadPunta={220}
-              enlace={"/sr1"}
+              enlace={"/SS1"}
             />
             <CocheCatalogo
               modelo={"SS2"}
@@ -34,7 +34,7 @@ export default function Cars() {
               potencia={230}
               peso={850}
               velocidadPunta={240}
-              enlace={"/sr2"}
+              enlace={"/SS2"}
             />
             <CocheCatalogo
               modelo={"SSV"}
@@ -44,11 +44,12 @@ export default function Cars() {
               potencia={350}
               peso={1000}
               velocidadPunta={280}
-              enlace={"/sr3"}
+              enlace={"/SSV"}
             />{" "}
           </div>
         </div>
       </div>
+      <div className="col"></div>
 
       <Footer></Footer>
     </>
