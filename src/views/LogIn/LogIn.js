@@ -3,6 +3,27 @@ import Navegacion from "../../Layouts/Header/Header";
 import Footer from "../../Layouts/Footer/Footer";
 import "./LogIn.css";
 
+function validacionLogIn() {
+  let validation = "true";
+
+  let email = document.getElementById("username");
+  let password = document.getElementById("password");
+
+  if (email.value === "") {
+    email.style.borderColor = "red";
+    validation = "false";
+    alert("El correo es un campo obligatorio");
+  } else if (password.value === "") {
+    password.style.borderColor = "red";
+    validation = "false";
+    alert("La contraseña es un campo obligatorio");
+  }
+
+  if (validation === "true") {
+    alert("validacion correcta");
+  }
+}
+
 export default function LogIn() {
   return (
     <>
@@ -39,6 +60,7 @@ export default function LogIn() {
                   type="submit"
                   className="btn mt-5 col-5 col-md-3 col-lg-3"
                   id="botonLogIn"
+                  onClick={validacionLogIn}
                 >
                   Accede
                 </button>

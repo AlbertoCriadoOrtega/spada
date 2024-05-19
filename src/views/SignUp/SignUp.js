@@ -55,7 +55,7 @@ export default function SignUp() {
   return (
     <>
       <Navegacion />
-      <div className="d-flex justify-content-center">
+      <div className="col-12 d-flex justify-content-center pb-5">
         <div className="d-none d-lg-block col-2"></div>
         <div className="col mt-5 mb-5 col-12 col-md-10 col-lg-6 ps-4 pe-4">
           <div className="login-container col-12">
