@@ -54,106 +54,109 @@ function validacionSignUp() {
 export default function SignUp() {
   return (
     <>
-      <Navegacion />
-      <div className="col-12 d-flex justify-content-center pb-5">
-        <div className="d-none d-lg-block col-2"></div>
-        <div className="col mt-5 mb-5 col-12 col-md-10 col-lg-6 ps-4 pe-4">
-          <div className="login-container col-12">
-            <h2 className="text-center mb-4">Crear cuenta</h2>
-            <form>
-              <div className="form-group">
-                <label htmlFor="username" className="ps-3">
-                  Correo<span className="text-danger">*</span>
-                </label>
-                <input
-                  type="email"
-                  className="form-control mt-1 col-12 col-md-3 col-lg-3"
-                  id="username"
-                  placeholder="introduce tu Correo"
-                  required
-                ></input>
-              </div>
-              <div className="form-group col-12 mt-3">
-                <label htmlFor="password" className="ps-3">
-                  Contraseña<span className="text-danger">*</span>
-                </label>
-                <input
-                  type="password"
-                  className="form-control mt-1 col-12 col-md-3 col-lg-3"
-                  id="password"
-                  placeholder="introduce tu contraseña"
-                  required
-                ></input>
-                <small className="ps-3">
-                  De 6 a 12 caracteres alfanumericos con al menos 1 numero y al
-                  menos un caracter especial
-                </small>
-              </div>
-              <div className="form-group col-12 mt-3">
-                <label htmlFor="name" className="ps-3">
-                  Nombre<span className="text-danger">*</span>
-                </label>
-                <input
-                  type="text"
-                  className="form-control mt-1 col-12 col-md-3 col-lg-3"
-                  id="name"
-                  placeholder="introduce tu nombre"
-                  required
-                ></input>
-                <small className="ps-3">
-                  Formato: nombre y primer apellido
-                </small>
-              </div>
-              <div className="form-group mt-3">
-                <label htmlFor="phone" className="ps-3">
-                  Teléfono<span className="text-danger">*</span>
-                </label>
-                <input
-                  type="tel"
-                  className="form-control mt-1 col-12 col-md-3 col-lg-3"
-                  id="phone"
-                  placeholder="introduce tu teléfono"
-                  required
-                ></input>
-              </div>
-              <div className="form-group mt-3 mb-5">
-                <label htmlFor="address" className="ps-3">
-                  Dirección<span className="text-danger">*</span>
-                </label>
-                <input
-                  type="text"
-                  className="form-control mt-1 col-12 col-md-3 col-lg-3"
-                  id="address"
-                  placeholder="introduce tu dirección"
-                  required
-                ></input>
-              </div>
-              <span className="text-danger">Campo obligatorio: *</span>
+      {" "}
+      <div className="d-flex justify-content-center flex-wrap">
+        {" "}
+        <Navegacion />
+        <div className="col-12 d-flex justify-content-center pb-5">
+          <div className="d-none d-lg-block col-2"></div>
+          <div className="col mt-5 mb-5 col-12 col-md-10 col-lg-6 ps-4 pe-4">
+            <div className="login-container col-12">
+              <h2 className="text-center mb-4">Crear cuenta</h2>
+              <form>
+                <div className="form-group">
+                  <label htmlFor="username" className="ps-3">
+                    Correo<span className="text-danger">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    className="form-control mt-1 col-12 col-md-3 col-lg-3"
+                    id="username"
+                    placeholder="introduce tu Correo"
+                    required
+                  ></input>
+                </div>
+                <div className="form-group col-12 mt-3">
+                  <label htmlFor="password" className="ps-3">
+                    Contraseña<span className="text-danger">*</span>
+                  </label>
+                  <input
+                    type="password"
+                    className="form-control mt-1 col-12 col-md-3 col-lg-3"
+                    id="password"
+                    placeholder="introduce tu contraseña"
+                    required
+                  ></input>
+                  <small className="ps-3">
+                    De 6 a 12 caracteres alfanumericos con al menos 1 numero y
+                    al menos un caracter especial
+                  </small>
+                </div>
+                <div className="form-group col-12 mt-3">
+                  <label htmlFor="name" className="ps-3">
+                    Nombre<span className="text-danger">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control mt-1 col-12 col-md-3 col-lg-3"
+                    id="name"
+                    placeholder="introduce tu nombre"
+                    required
+                  ></input>
+                  <small className="ps-3">
+                    Formato: nombre y primer apellido
+                  </small>
+                </div>
+                <div className="form-group mt-3">
+                  <label htmlFor="phone" className="ps-3">
+                    Teléfono<span className="text-danger">*</span>
+                  </label>
+                  <input
+                    type="tel"
+                    className="form-control mt-1 col-12 col-md-3 col-lg-3"
+                    id="phone"
+                    placeholder="introduce tu teléfono"
+                    required
+                  ></input>
+                </div>
+                <div className="form-group mt-3 mb-5">
+                  <label htmlFor="address" className="ps-3">
+                    Dirección<span className="text-danger">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control mt-1 col-12 col-md-3 col-lg-3"
+                    id="address"
+                    placeholder="introduce tu dirección"
+                    required
+                  ></input>
+                </div>
+                <span className="text-danger">Campo obligatorio: *</span>
 
-              <div className="col-12 d-flex justify-content-center">
-                <p
-                  type="submit"
-                  className="btn mt-5 col-5 col-md-3 col-lg-6"
-                  id="botonLogIn"
-                  onClick={validacionSignUp}
-                >
-                  Crear cuenta
-                </p>
-              </div>
-            </form>
+                <div className="col-12 d-flex justify-content-center">
+                  <p
+                    type="submit"
+                    className="btn mt-5 col-5 col-md-3 col-lg-6"
+                    id="botonLogIn"
+                    onClick={validacionSignUp}
+                  >
+                    Crear cuenta
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div className="d-none d-lg-block col-4 d-flex text-center">
+            <img
+              alt="imagen de coche"
+              src={IMG}
+              className="img-fluid mt-5 mb-5 w-50"
+              id="imagenSignUp"
+            ></img>
           </div>
         </div>
-        <div className="d-none d-lg-block col-4 d-flex text-center">
-          <img
-            alt="imagen de coche"
-            src={IMG}
-            className="img-fluid mt-5 mb-5 w-50"
-            id="imagenSignUp"
-          ></img>
-        </div>
+        <Footer />
       </div>
-
-      <Footer />
     </>
   );
 }

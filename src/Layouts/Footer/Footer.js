@@ -5,7 +5,7 @@ export default class Footer extends Component {
   render() {
     return (
       <>
-        <footer className="text-center text-white" id="footer">
+        <footer className="text-center text-white col-12" id="footer">
           <section className="p-4 pb-0">
             <h2 className="text-uppercase">Siguenos en redes</h2>
             <div className="row d-flex justify-content-center">

@@ -7,7 +7,7 @@ export class Header extends Component {
   render() {
     return (
       <>
-        <header>
+        <header className="col-12">
           <nav className="nav" id="nav">
             <div className="col col-md-2 d-flex align-items-center">
               <a href="/">
