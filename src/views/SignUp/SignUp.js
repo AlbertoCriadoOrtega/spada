@@ -45,7 +45,7 @@ function validacionSignUp() {
   }
 
   if (validation === "true") {
-    if (confirm("¿Quieres crear tu cuenta?")) {
+    if (window.confirm("¿Quieres crear tu cuenta?")) {
       window.location.replace("/");
     }
   }
