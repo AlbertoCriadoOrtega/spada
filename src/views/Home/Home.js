@@ -38,7 +38,7 @@ export default function Home() {
         {/* Contenedor coches */}
         <div className="col-10 d-flex flex-wrap justify-content-center">
           <CartaCoche
-            modelo={"SR1"}
+            modelo={"SS1"}
             imagen={
               "https://zmfqrnenekgkedngmqke.supabase.co/storage/v1/object/public/media/radical/SR1XXR_on.png"
             }
@@ -48,7 +48,7 @@ export default function Home() {
             enlace={"/sr1"}
           />
           <CartaCoche
-            modelo={"SR2"}
+            modelo={"SS1"}
             imagen={
               "https://zmfqrnenekgkedngmqke.supabase.co/storage/v1/object/public/media/radical/SR1XXR_on.png"
             }
@@ -58,17 +58,7 @@ export default function Home() {
             enlace={"/sr2"}
           />
           <CartaCoche
-            modelo={"SR3"}
-            imagen={
-              "https://zmfqrnenekgkedngmqke.supabase.co/storage/v1/object/public/media/radical/SR1XXR_on.png"
-            }
-            potencia={350}
-            peso={1000}
-            velocidadPunta={280}
-            enlace={"/sr3"}
-          />{" "}
-          <CartaCoche
-            modelo={"SR3"}
+            modelo={"SSV"}
             imagen={
               "https://zmfqrnenekgkedngmqke.supabase.co/storage/v1/object/public/media/radical/SR1XXR_on.png"
             }

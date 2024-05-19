@@ -5,11 +5,15 @@ export default function Filter() {
   return (
     <>
       <div className="col-12 d-flex flex-wrap justify-content-center mt-2 mb-2">
-        <input className="" type="text" placeholder="Buscar" />
+        <input
+          className="col-8 col-sm-8 col-md-6 col-lg-4"
+          type="text"
+          placeholder="Buscar pieza"
+        />
       </div>
       <div className="col-12 d-flex flex-wrap justify-content-center mt-1 mb-1">
         <button
-          className="btn botonFiltro col-4"
+          className=" botonFiltro col-4 col-sm-4 col-md-3 col-lg-2"
           data-bs-toggle="offcanvas"
           data-bs-target="#filtro"
         >
@@ -27,15 +31,15 @@ export default function Filter() {
           ></button>
         </div>
         <div className="offcanvas-body">
-          <div>
+          <div className="mt-3">
             <h5>Precio mínimo</h5>
             <input className="form-control"></input>
           </div>
-          <div>
+          <div className="mt-3">
             <h5>Precio máximo</h5>
             <input className="form-control"></input>
           </div>
-          <div>
+          <div className="mt-3">
             <h5>Tipo de pieza</h5>
             <select className="form-select">
               <option>Frenos</option>
@@ -47,8 +51,12 @@ export default function Filter() {
               <option>Alerones</option>
             </select>
           </div>
-          <div>
-            <button className="btn"></button>
+          <div className="mt-3">
+            <h5>Ordenar</h5>
+            <select className="form-select">
+              <option>Precio ascendente</option>
+              <option>Precio descendente</option>
+            </select>
           </div>
         </div>
         <div className="offcanvas-footer pt-3 d-flex justify-content-center col-12 pb-3">

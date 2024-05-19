@@ -1,4 +1,27 @@
-#parteRecambio {
-  max-width: calc(47% - 0.5rem);
-  min-width: calc(47% - 0.5rem);
+@media (min-width: 576px) {
+  #parteRecambio {
+    max-width: calc(100% - 0.5rem);
+    min-width: calc(100% - 0.5rem);
+  }
+}
+
+@media (min-width: 768px) {
+  #parteRecambio {
+    max-width: calc(47% - 0.5rem);
+    min-width: calc(47% - 0.5rem);
+  }
+}
+
+@media (min-width: 992px) {
+  #parteRecambio {
+    max-width: calc(25% - 0.5rem);
+    min-width: calc(25% - 0.5rem);
+  }
+}
+
+@media (min-width: 1200px) {
+  #parteRecambio {
+    max-width: calc(20% - 0.5rem);
+    min-width: calc(20% - 0.5rem);
+  }
 }

@@ -1,0 +1,8 @@
+.fondo {
+  background-color: #0c0c0c;
+}
+
+#tituloCoches {
+  font-size: clamp(1.5rem, 0.9375rem + 3vw, 3rem);
+  color: #2ea8e0;
+}

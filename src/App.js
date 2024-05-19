@@ -10,6 +10,7 @@ import User from "./views/User/User";
 import SSV from "./views/SSV/SSV";
 import Cars from "./views/Cars/Cars";
 import OurTeam from "./views/OurTeam/OurTeam";
+import Carrito from "./views/Carrito/Carrito";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/ssv" element={<SSV />} />
         <Route path="/coches" element={<Cars />} />
         <Route path="/equipo" element={<OurTeam />} />
+        <Route path="/carrito" element={<Carrito />} />
       </Routes>
     </Router>
   );

@@ -1,8 +1,8 @@
 #cartas {
-  background: rgb(0, 0, 0);
+  background: rgb(12, 12, 12);
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 1) 0%,
+    rgba(12, 12, 12, 1) 0%,
     rgba(12, 24, 37, 1) 67%
   );
 }
@@ -13,11 +13,6 @@
 
 .Enfasis {
   color: hsl(199, 74%, 53%);
-}
-
-#separador {
-  height: 5px;
-  background-color: whitesmoke;
 }
 
 .eyeCatch {
@@ -43,5 +38,5 @@
 
 #enviar:hover {
   background-color: #e4ae2d;
-  color: #000;
+  color: #0c0c0c;
 }
