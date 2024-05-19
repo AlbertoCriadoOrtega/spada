@@ -39,4 +39,5 @@
 #enviar:hover {
   background-color: #e4ae2d;
   color: #0c0c0c;
+  transition: all 0.5s;
 }

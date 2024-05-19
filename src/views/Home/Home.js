@@ -73,28 +73,15 @@ export default function Home() {
             Empieza a ser competitivo
           </h2>
           <h5 className="col-12 text-center pt-1 pb-4 text-uppercase eyeCatch2">
-            Contacta con nosotros
+            unete a nuestra comunidad
           </h5>
-          <form className="col-12  d-flex flex-wrap justify-content-center pt-3">
+          <div className="col-12  d-flex flex-wrap justify-content-center pt-3">
             <div className="col-10 col-md-8 col-xl-5 d-flex flex-wrap justify-content-center">
-              <input
-                type="text"
-                className="form-control col-12 "
-                placeholder="Nombre"
-              />
-              <input
-                type="text"
-                className="form-control col-12 mt-3"
-                placeholder="Correo"
-              ></input>
-              <input
-                id="enviar"
-                className="btn col-4  mt-3"
-                type="submit"
-                onClick={""}
-              ></input>
+              <a id="enviar" className="btn col-4  mt-3 fs-4" href="/registro">
+                Inscríbete
+              </a>
             </div>
-          </form>
+          </div>
         </div>
       </div>
 
