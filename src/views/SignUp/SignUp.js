@@ -54,16 +54,14 @@ function validacionSignUp() {
 export default function SignUp() {
   return (
     <>
-      {" "}
-      <div className="d-flex justify-content-center flex-wrap">
-        {" "}
+      <div className="col-12 d-flex justify-content-center flex-wrap">
         <Navegacion />
         <div className="col-12 d-flex justify-content-center pb-5">
           <div className="d-none d-lg-block col-2"></div>
           <div className="col mt-5 mb-5 col-12 col-md-10 col-lg-6 ps-4 pe-4">
             <div className="login-container col-12">
               <h2 className="text-center mb-4">Crear cuenta</h2>
-              <form>
+              <form className="col-12">
                 <div className="form-group">
                   <label htmlFor="username" className="ps-3">
                     Correo<span className="text-danger">*</span>
