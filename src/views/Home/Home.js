@@ -10,7 +10,9 @@ export default function Home() {
   return (
     <>
       <Header />
-      <div></div>
+      <div>
+        <a href="../rogelio.php">qwe</a>
+      </div>
       <VideoFront />
       <div
         className="col-12 d-flex flex-wrap justify-content-center pt-5 pb-5"
