@@ -1,0 +1,8 @@
+.carousel-caption {
+  backdrop-filter: blur(10px);
+  color: #f9f6ee !important;
+}
+
+.carousel-item > img {
+  opacity: 0.75 !important;
+}

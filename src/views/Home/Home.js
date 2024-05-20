@@ -65,7 +65,7 @@ export default function Home() {
             peso={1000}
             velocidadPunta={280}
             enlace={"/sr3"}
-          />{" "}
+          />
         </div>
 
         <div className="col-12 fondoEyeCatch pt-5">
