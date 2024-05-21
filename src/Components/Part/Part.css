@@ -25,3 +25,11 @@
     min-width: calc(20% - 0.5rem);
   }
 }
+
+#parteRecambio {
+  background-color: #0c1825;
+}
+
+#botonCompra {
+  background-color: #2ea8e0;
+}

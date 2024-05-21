@@ -48,8 +48,13 @@ export default function Cars() {
             />{" "}
           </div>
         </div>
+        <div className="col mb-0 d-flex justify-content-center pb-5">
+          <h2 className="text-uppercase fs-1 text-white text-center col-5">
+            conoce más de los modelos, haz{" "}
+            <span className="Enfasis">click en ellos</span>
+          </h2>
+        </div>
       </div>
-      <div className="col"></div>
 
       <Footer></Footer>
     </>

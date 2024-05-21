@@ -4,6 +4,8 @@ import Footer from "../../Layouts/Footer/Footer";
 import Filter from "../../Components/Filter/Filter";
 import Part from "../../Components/Part/Part";
 
+import "./Store.css";
+
 export default function Store() {
   const numberOfParts = 10;
 
@@ -16,7 +18,7 @@ export default function Store() {
     <>
       <Navegacion />
       <Filter />
-      <div className="col-12 d-flex flex-wrap justify-content-center">
+      <div className="col-12 d-flex flex-wrap justify-content-center fondoTienda">
         {parts}
       </div>
       <Footer />

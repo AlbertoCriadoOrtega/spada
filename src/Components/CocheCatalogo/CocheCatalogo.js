@@ -11,7 +11,7 @@ const CocheCatalogo = ({
 }) => {
   return (
     <a
-      className="col-12 col-sm-6 col-md-4 col-lg-4 p-2 text-decoration-none"
+      className="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4 p-2 text-decoration-none"
       href={enlace}
     >
       <div className="card" id="CocheCatalogo">

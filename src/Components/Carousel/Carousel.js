@@ -11,7 +11,7 @@ import "./Carousel.css";
 
 export default function Carousel() {
   return (
-    <div className="d-flex justify-content-center bg-black">
+    <div className="d-flex justify-content-center  pb-5 ">
       <div
         id="carousel"
         className="carousel slide bg-black w-75"
@@ -77,7 +77,7 @@ export default function Carousel() {
             ></img>
             <div className="carousel-caption d-none d-md-block ">
               <h3>1950</h3>
-              <p className="fs-5">
+              <p className="fs-4">
                 Some representative placeholder content for the first slide.
               </p>
             </div>
@@ -90,7 +90,7 @@ export default function Carousel() {
             ></img>
             <div className="carousel-caption d-none d-md-block ">
               <h3>1960</h3>
-              <p className="fs-5">
+              <p className="fs-4">
                 Some representative placeholder content for the second slide.
               </p>
             </div>
@@ -103,7 +103,7 @@ export default function Carousel() {
             ></img>
             <div className="carousel-caption d-none d-md-block ">
               <h3>1970</h3>
-              <p className="fs-5">
+              <p className="fs-4">
                 Some representative placeholder content for the third slide.
               </p>
             </div>
@@ -116,7 +116,7 @@ export default function Carousel() {
             ></img>
             <div className="carousel-caption d-none d-md-block ">
               <h3>1980</h3>
-              <p className="fs-5">
+              <p className="fs-4">
                 Some representative placeholder content for the fourth slide.
               </p>
             </div>
@@ -129,7 +129,7 @@ export default function Carousel() {
             ></img>
             <div className="carousel-caption d-none d-md-block ">
               <h3>1990</h3>
-              <p className="fs-5">
+              <p className="fs-4">
                 Some representative placeholder content for the fifth slide.
               </p>
             </div>
@@ -142,7 +142,7 @@ export default function Carousel() {
             ></img>
             <div className="carousel-caption d-none d-md-block ">
               <h3>2000</h3>
-              <p className="fs-5">
+              <p className="fs-4">
                 Some representative placeholder content for the sixth slide.
               </p>
             </div>
@@ -155,7 +155,7 @@ export default function Carousel() {
             ></img>
             <div className="carousel-caption d-none d-md-block ">
               <h3>2010</h3>
-              <p className="fs-5">
+              <p className="fs-4">
                 Some representative placeholder content for the seventh slide.
               </p>
             </div>
@@ -168,7 +168,7 @@ export default function Carousel() {
             ></img>
             <div className="carousel-caption d-none d-md-block ">
               <h3>2020</h3>
-              <p className="fs-5">
+              <p className="fs-4">
                 Some representative placeholder content for the eighth slide.
               </p>
             </div>
