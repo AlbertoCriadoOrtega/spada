@@ -26,7 +26,7 @@ export default function Filter() {
           <div className="offcanvas-header">
             <button
               type="button"
-              class="btn-close fs-3 text-dark fw-bold"
+              className="btn-close fs-3 text-dark fw-bold"
               data-bs-dismiss="offcanvas"
               aria-label="Close"
             ></button>
@@ -63,7 +63,7 @@ export default function Filter() {
           <div className="offcanvas-footer pt-3 d-flex justify-content-center col-12 pb-3">
             <button
               type="button"
-              class="btn botonFiltro col-4"
+              className="btn botonFiltro col-4"
               data-bs-dismiss="offcanvas"
             >
               Aplicar

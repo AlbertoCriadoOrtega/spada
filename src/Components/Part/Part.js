@@ -2,33 +2,42 @@ import React from "react";
 import IMG from "../../Assets/images/AboutUs/img3.jpg";
 import "./Part.css";
 
-function guardarEnCarrito(e) {
+function guardarEnCarrito(btnComprarArticulo) {
   if (localStorage.getItem("carrito") === null) {
-    let divPadre = e.target.parentElement.parentElement;
+    let divPadre = btnComprarArticulo.target.parentElement.parentElement;
     let nombre = divPadre.children[1].children[1].textContent.trim();
     let precio =
       divPadre.children[1].children[2].children[0].children[0].textContent.trim();
-
+    let imagen = divPadre.children[0].children[0].src;
     let carrito = [];
-    carrito.push({ nombre: nombre, precio: precio, cantidad: 1 });
+
+    carrito.push({
+      nombre: nombre,
+      precio: precio,
+      cantidad: 1,
+      imagen: imagen,
+    });
 
     localStorage.setItem("carrito", JSON.stringify(carrito));
   } else {
     let carrito = JSON.parse(localStorage.getItem("carrito"));
-
-    let divPadre = e.target.parentElement.parentElement;
+    let divPadre = btnComprarArticulo.target.parentElement.parentElement;
     let nombre = divPadre.children[1].children[1].textContent.trim();
     let precio =
       divPadre.children[1].children[2].children[0].children[0].textContent.trim();
-
+    let imagen = divPadre.children[0].children[0].src;
     let itemIndex = carrito.findIndex((item) => item.nombre === nombre);
 
     if (itemIndex !== -1) {
       carrito[itemIndex].cantidad += 1;
     } else {
-      carrito.push({ nombre: nombre, precio: precio, cantidad: 1 });
+      carrito.push({
+        nombre: nombre,
+        precio: precio,
+        cantidad: 1,
+        imagen: imagen,
+      });
     }
-
     localStorage.setItem("carrito", JSON.stringify(carrito));
   }
 
@@ -56,7 +65,7 @@ export default function Part() {
           id="botonCompra"
           onClick={guardarEnCarrito}
         >
-          Comprar
+          Añadir al carrito
         </button>
       </div>
     </article>
