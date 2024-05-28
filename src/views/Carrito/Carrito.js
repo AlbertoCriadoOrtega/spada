@@ -7,41 +7,34 @@ import ItemCarrito from "../../Components/ItemCarrito/ItemCarrito";
 function vaciarCarrito() {
   if (window.confirm("¿Seguro que quieres vaciar el carrito?")) {
     localStorage.removeItem("carrito");
-  }
-}
-
-function mostrarCarrito() {
-  const carritoData = localStorage.getItem("carrito");
-  let carrito = [];
-
-  if (carritoData) {
-    carrito = JSON.parse(carritoData);
-  }
-
-  if (localStorage.getItem("carrito") === null) {
-    return (
-      <div className="col-12 d-flex justify-content-center">
-        <p className="fs-3">Tu cesta esta vacia</p>
-      </div>
-    );
-  } else {
-    let items = [];
-    carrito.map((item, index) =>
-      items.push(
-        <ItemCarrito
-          key={index}
-          imagen={item.imagen}
-          nombre={item.nombre}
-          precio={item.precio}
-          cantidad={item.cantidad}
-        />
-      )
-    );
-    return <>{}</>;
+    window.location.reload();
   }
 }
 
 export default function Carrito() {
+  let items = null;
+  let carrito = JSON.parse(localStorage.getItem("carrito"));
+
+  if (carrito === null || carrito.length === 0) {
+    window.onload = function () {
+      let padre = document.getElementById("items");
+      let aviso = document.createElement("h1");
+      aviso.className = " text-uppercase text-center fs-1 col-12";
+      aviso.innerText = "Tu cesta está vacía";
+      padre.appendChild(aviso);
+    };
+  } else {
+    items = carrito.map((item, index) => (
+      <ItemCarrito
+        key={index}
+        nombre={item.nombre}
+        precio={item.precio}
+        imagen={item.imagen}
+        cantidad={item.cantidad}
+      />
+    ));
+  }
+
   return (
     <>
       <Header />
@@ -53,7 +46,9 @@ export default function Carrito() {
           className="col-12 d-flex justify-content-center flex-wrap"
           id="cesta"
         >
-          {mostrarCarrito()}
+          <div className="col-10 d-flex flex-wrap" id="items">
+            {items}
+          </div>
         </div>
       </div>
       <div className="col-12 d-flex justify-content-center mt-3 mb-3">
