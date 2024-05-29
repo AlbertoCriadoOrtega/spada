@@ -1,3 +1,4 @@
+/* Responsive styling for #parteRecambio */
 @media (min-width: 576px) {
   #parteRecambio {
     max-width: calc(100% - 0.5rem);
@@ -26,10 +27,61 @@
   }
 }
 
+/* Styling for #parteRecambio */
 #parteRecambio {
-  background-color: #0c1825;
+  background-color: #1e1e1e; /* Slightly lighter black */
+  color: #ffffff; /* White text */
+  border-radius: 10px; /* Rounded corners */
+  overflow: hidden; /* Ensure children elements don't overflow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19); /* Enhanced shadow for depth */
+  transition: transform 0.2s, box-shadow 0.2s; /* Smooth scaling and shadow on hover */
+}
+
+#parteRecambio:hover {
+  transform: scale(1.02); /* Slightly increase size on hover */
+  box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3),
+    0 8px 24px rgba(255, 255, 255, 0.22); /* Slightly stronger shadow on hover */
+}
+
+#parteRecambio img {
+  border-radius: 25px; /* Rounded top corners for the image */
+}
+
+#parteRecambio > * {
+  padding: 10px 15px; /* Consistent padding */
+}
+
+#parteRecambio h5 {
+  font-size: 1.2em; /* Larger font size for category */
+  margin-bottom: 5px; /* Space below the heading */
+}
+
+#parteRecambio p {
+  font-size: 1em; /* Normal font size for text */
+  margin: 5px 0; /* Space around paragraphs */
+}
+
+#parteRecambio .price {
+  font-size: 1.1em; /* Slightly larger for price */
+  font-weight: bold; /* Bold for emphasis */
+  color: #87cefa; /* Light Sky Blue for the price */
 }
 
 #botonCompra {
-  background-color: #2ea8e0;
+  background-color: #4682b4; /* Steel Blue */
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px; /* Rounded corners for button */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s; /* Smooth transitions */
+}
+
+#botonCompra:hover {
+  background-color: #fff;
+  color: #4682b4;
+}
+
+#botonCompra:active {
+  transform: scale(1.09);
 }

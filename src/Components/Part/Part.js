@@ -53,18 +53,25 @@ class Part extends Component {
         id="parteRecambio"
       >
         <figure className="col-12 d-flex justify-content-center mt-3">
-          <img src={imagenURL} className="col-11" alt="" />
+          <img
+            src={imagenURL}
+            className="col-11"
+            width={200}
+            height={200}
+            alt=""
+          />
         </figure>
-        <div className="col-12 d-flex flex-column ps-3">
-          <h5 className="col-12 m-0">{categoria}</h5>
+        <div className="col-12 d-flex flex-column ps-3 ">
+          <h5 className="col-12 m-0 fw-bolder">{categoria}</h5>
           <p className="col-12 m-0 fw-lighter">{nombre}</p>
           <p className="col-12 m-0">
-            <span className="fs-5 m-0">
-              Precio: <span>{precio}</span> €
+            <span className="m-0 fw-normal">
+              Precio: <span className="Enfasis">{precio}</span>{" "}
+              <span className="Enfasis">€</span>
             </span>
           </p>
         </div>
-        <div className="col-12 d-flex ps-3 pt-2 pb-2">
+        <div className="col-12 d-flex ps-3 pt-2 pb-2 ">
           <button
             className="btn col-6"
             id="botonCompra"

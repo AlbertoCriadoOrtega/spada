@@ -1,3 +1,45 @@
 .cesta {
   min-height: 80vh;
 }
+
+.btnComprar {
+  font-size: calc(1rem + 0.5vw + 0.5vh);
+  border: none;
+  border-radius: 25px;
+  color: #fff;
+  padding: 10px;
+  transition: all 0.2s ease-in-out;
+  background-color: #0c1825;
+}
+
+.btnComprar:hover {
+  background-color: lightgreen;
+  color: #000;
+  transition: all 0.2s ease-in-out;
+}
+
+.btnComprar:active {
+  transform: scale(1.06);
+  transition: all 0.1s ease-in-out;
+}
+
+.btnVaciar {
+  font-size: calc(0.7rem + 0.5vw + 0.5vh);
+  border: none;
+  border-radius: 25px;
+  color: #fff;
+  padding: 10px 0px;
+  transition: all 0.2s ease-in-out;
+  background-color: #0c1825;
+}
+
+.btnVaciar:hover {
+  background-color: darkred;
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+
+.btnVaciar:active {
+  transform: scale(1.06);
+  transition: all 0.1s ease-in-out;
+}

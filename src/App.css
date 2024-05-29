@@ -1,8 +1,28 @@
 @font-face {
   font-family: Futura;
+  src: url(./Assets/Fonts/FuturaPTExtraBold.otf);
+  font-weight: bolder;
+}
+
+@font-face {
+  font-family: Futura;
   src: url(./Assets/Fonts/FuturaPTBold.otf);
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: Futura;
+  src: url(./Assets/Fonts/FuturaPTMedium.otf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: Futura;
+  src: url(./Assets/Fonts/FuturaPTLight.otf);
+  font-weight: lighter;
 }
 
 * {
   font-family: Futura, sans-serif;
+  font-weight: bold !important;
 }

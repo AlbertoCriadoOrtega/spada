@@ -1,0 +1,56 @@
+.botonMas {
+  background-color: #0c1825;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  transition: all 0.1s ease-in-out;
+}
+
+.botonMas:hover {
+  background-color: lightgreen;
+  color: #000;
+  border-radius: 25px;
+  transition: all 0.2s ease-in-out;
+}
+
+.botonMas:active {
+  transform: scale(1.06);
+  transition: all 0.1s ease-in-out;
+}
+
+.botonMenos {
+  background-color: #0c1825;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  transition: all 0.1s ease-in-out;
+}
+
+.botonMenos:hover {
+  background-color: red;
+  color: #000;
+  transition: all 0.2s ease-in-out;
+}
+
+.botonMenos:active {
+  transform: scale(1.06);
+  transition: all 0.1s linear;
+}
+
+.botonEliminar {
+  background-color: #0c1825;
+  color: #fff;
+  border: none;
+  padding: 5px;
+  border-radius: 25px;
+  transform: scale(1);
+  transition: all 0.1s ease-in-out;
+}
+
+.botonEliminar:hover {
+  background-color: darkred;
+  color: #fff;
+  font-size: 300px;
+  transform: scale(1.2);
+  transition: all 0.2s ease-in-out;
+}

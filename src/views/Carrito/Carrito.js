@@ -52,12 +52,16 @@ export default function Carrito() {
         </div>
       </div>
       <div className="col-12 d-flex justify-content-center mt-3 mb-3">
-        <div className="col-6 d-flex justify-content-center">
-          <button className="btn fs-3">COMPRAR</button>
+        <div className="col-6 d-flex justify-content-center ">
+          <button className=" btnComprar">COMPRAR</button>
         </div>
-        <div className="col-6 d-flex justify-content-center">
-          <button className="btn fs-3" onClick={vaciarCarrito}>
-            VACIAR CARRITO
+        <div className="col-6 d-flex justify-content-center ">
+          <button
+            className=" d-flex justify-content-center flex-wrap btnVaciar"
+            onClick={vaciarCarrito}
+          >
+            <span className="col-12">VACIAR</span>{" "}
+            <span className="col-12">CARRITO</span>
           </button>
         </div>
       </div>
