@@ -79,10 +79,10 @@ export default function Home() {
             <div className="col-10 col-md-8 col-xl-5 d-flex flex-wrap justify-content-center">
               <a
                 id="enviar"
-                className="btn col-8 col-sm-6 col-xl-4  mt-3 fs-4"
+                className="btn col-8 col-sm-6 col-xl-4  mt-3 fs-4 text-uppercase "
                 href="/registro"
               >
-                Inscríbete
+                Crea una cuenta
               </a>
             </div>
           </div>

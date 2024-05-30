@@ -11,7 +11,7 @@ import "./Carousel.css";
 
 export default function Carousel() {
   return (
-    <div className="d-flex justify-content-center  pb-5 ">
+    <div className="d-flex justify-content-center">
       <div
         id="carousel"
         className="carousel slide bg-black w-75"

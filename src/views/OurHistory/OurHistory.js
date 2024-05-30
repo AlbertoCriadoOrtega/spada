@@ -82,7 +82,7 @@ export default function OurHistory() {
         />
       </div>
 
-      <div className="col-12 d-none d-lg-block bg-black  pb-5">
+      <div className="col-12 d-none d-lg-block bg-black  pb-5 pt-5">
         <Carousel></Carousel>
       </div>
 

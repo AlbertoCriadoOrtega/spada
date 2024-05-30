@@ -14,6 +14,7 @@ export class ScrollDownButton extends Component {
               <path
                 d="M11.9997 13.1716L7.04996 8.22186L5.63574 9.63607L11.9997 16L18.3637 9.63607L16.9495 8.22186L11.9997 13.1716Z"
                 fill="#FFF"
+                className="main__scroll-icon"
               ></path>
             </svg>
           </div>

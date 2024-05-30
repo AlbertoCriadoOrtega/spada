@@ -1,6 +1,6 @@
 import React from "react";
 import "./CarImage.css";
-import IMG from "../../Assets/images/AboutUs/test.jpg";
+import IMG from "../../Assets/images/Carousel/test.jpg";
 
 function CarImage({ textoAlternativo }) {
   return (

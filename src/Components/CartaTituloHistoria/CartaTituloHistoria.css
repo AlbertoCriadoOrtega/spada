@@ -16,7 +16,7 @@
       rgba(12, 12, 12, 0) 0%,
       rgba(12, 12, 12, 0.9) 90%
     ),
-    url("../../Assets/images/AboutUs/test.jpg");
+    url("../../Assets/images/Carousel/test.jpg");
 
   background-size: cover;
 }
@@ -24,5 +24,10 @@
 #textoTitulo {
   color: white;
   font-size: 10vw;
+  text-shadow: #0c1825 0px 5px 19px;
+}
+
+.main__scroll-text {
+  font-size: 4.5vw;
   text-shadow: #0c1825 0px 5px 19px;
 }
