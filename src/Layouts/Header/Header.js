@@ -30,39 +30,39 @@ export class Header extends Component {
               <div className="text-white d-flex justify-content-center">
                 <a
                   href="/coches"
-                  className="text-white text-decoration-none fs-5 ps-3 pe-3"
+                  className="text-white text-decoration-none fs-5 ps-3 pe-3 enlacesNav"
                 >
                   NUESTROS COCHES
                 </a>
                 <a
                   href="/tienda"
-                  className="text-white text-decoration-none fs-5 ps-3 pe-3"
+                  className="text-white text-decoration-none fs-5 ps-3 pe-3 enlacesNav"
                 >
                   RECAMBIOS
                 </a>
                 <a
                   href="/equipo"
-                  className="text-white text-decoration-none fs-5 ps-3 pe-3"
+                  className="text-white text-decoration-none fs-5 ps-3 pe-3 enlacesNav"
                 >
                   NUESTRO EQUIPO
                 </a>
                 <a
                   href="/historia"
-                  className="text-white text-decoration-none fs-5 ps-3 pe-3"
+                  className="text-white text-decoration-none fs-5 ps-3 pe-3 enlacesNav"
                 >
                   NUESTRA HISTORIA
                 </a>
               </div>
             </div>
-            <div className="col-md-1 d-none d-md-block d-flex justify-content-end align-content-center">
+            <div className="col-md-1 d-none d-md-block d-flex justify-content-end align-content-center enlacesNav">
               <a
                 href="/registro"
-                className="text-white text-decoration-none fs-5 ps-3 pe-3"
+                className="text-white text-decoration-none fs-5 ps-3 pe-3 "
               >
-                <i className="bi bi-person-fill fs-1"></i>
+                <i className="bi bi-person-fill fs-1 "></i>
               </a>
             </div>
-            <div className="col-md-1 d-none d-md-block d-flex justify-content-end align-content-center">
+            <div className="col-md-1 d-none d-md-block d-flex justify-content-end align-content-center enlacesNav">
               <a
                 href="/carrito"
                 className="text-white text-decoration-none fs-5 ps-3 pe-3"

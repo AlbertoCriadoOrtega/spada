@@ -77,7 +77,11 @@ export default function Home() {
           </h5>
           <div className="col-12  d-flex flex-wrap justify-content-center pt-3">
             <div className="col-10 col-md-8 col-xl-5 d-flex flex-wrap justify-content-center">
-              <a id="enviar" className="btn col-4  mt-3 fs-4" href="/registro">
+              <a
+                id="enviar"
+                className="btn col-8 col-sm-6 col-xl-4  mt-3 fs-4"
+                href="/registro"
+              >
                 Inscríbete
               </a>
             </div>

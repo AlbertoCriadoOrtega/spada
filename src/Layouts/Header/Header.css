@@ -14,9 +14,25 @@
 .Logo {
   width: 7vh;
   padding-left: 3em;
+  transition: all 0.2s ease-in-out;
+}
+
+.Logo:hover {
+  transform: translateY(-0.2rem);
+  transition: all 0.2s ease-in-out;
 }
 
 #logoFullScreen {
   width: 15vh;
   padding-left: 3em;
+}
+
+.enlacesNav {
+  transition: all 0.2s ease-in-out;
+}
+
+.enlacesNav:hover {
+  transform: translateY(-0.2rem);
+  color: #2ea8e0 !important;
+  transition: all 0.2s ease-in-out;
 }

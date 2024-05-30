@@ -45,6 +45,11 @@ class ItemCarrito extends Component {
         cantidad;
       localStorage.setItem("carrito", JSON.stringify(carrito));
     }
+
+    //si la cesta se queda vacia vuelvo a cargar la pagina
+    if (document.getElementById("items").children.length === 0) {
+      window.location.reload();
+    }
   };
 
   eliminarItem = (e) => {
@@ -72,20 +77,19 @@ class ItemCarrito extends Component {
             </div>
             <div className="col-4 ps-5">
               <div className="fw-bold fs-3">{nombre}</div>
-              <div className="fw-light fs-4">
-                Precio: <span className="Enfasis">{precio}</span>{" "}
-                <span className="Enfasis">€</span>
+              <div className="fw-normal fs-4">
+                Precio: <span className="">{precio}</span>{" "}
+                <span className="">€</span>
               </div>
-              <div className="fw-light fs-5" id="cantidad">
-                Cantidad: <span className="Enfasis">{cantidad}</span>
+              <div className="fw-normal fs-5" id="cantidad">
+                Cantidad: <span className="">{cantidad}</span>
               </div>
             </div>
             <div className="col-4">
-              <p className="fs-4 text-center mb-0">Precio total:</p>
               <p className="text-center fs-2">{precio * cantidad} €</p>
             </div>
           </div>
-          <div className="d-flex align-items-center col-4 text-center justify-content-around">
+          <div className="d-flex align-items-center col-2 text-center justify-content-around">
             <div className="d-flex flex-column align-items-center align-content-center">
               <button
                 className="bi bi-dash fs-1 mb-3 botonMenos"
