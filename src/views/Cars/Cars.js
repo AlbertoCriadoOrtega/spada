@@ -24,7 +24,7 @@ export default function Cars() {
               potencia={196}
               peso={750}
               velocidadPunta={220}
-              enlace={"/SS1"}
+              enlace={"/SSV"}
             />
             <CocheCatalogo
               modelo={"SS2"}
@@ -34,7 +34,7 @@ export default function Cars() {
               potencia={230}
               peso={850}
               velocidadPunta={240}
-              enlace={"/SS2"}
+              enlace={"/SSV"}
             />
             <CocheCatalogo
               modelo={"SSV"}
@@ -50,7 +50,7 @@ export default function Cars() {
         </div>
         <div className="col mb-0 d-flex justify-content-center pb-5">
           <h2 className="text-uppercase fs-1 text-white text-center col-5">
-            conoce más de los modelos, haz{" "}
+            Mira los modelos en detalle, haz{" "}
             <span className="Enfasis">click en ellos</span>
           </h2>
         </div>

@@ -44,7 +44,7 @@ export default function Home() {
             potencia={196}
             peso={750}
             velocidadPunta={220}
-            enlace={"/sr1"}
+            enlace={"/coches"}
           />
           <CartaCoche
             modelo={"SS1"}
@@ -54,7 +54,7 @@ export default function Home() {
             potencia={230}
             peso={850}
             velocidadPunta={240}
-            enlace={"/sr2"}
+            enlace={"/coches"}
           />
           <CartaCoche
             modelo={"SSV"}
@@ -64,7 +64,7 @@ export default function Home() {
             potencia={350}
             peso={1000}
             velocidadPunta={280}
-            enlace={"/sr3"}
+            enlace={"/coches"}
           />
         </div>
 
