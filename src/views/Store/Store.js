@@ -12,7 +12,7 @@ export default function Store() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch("localhost:8000c,/api/piezas");
+        const response = await fetch("https://localhost:8000/api/piezas");
         if (!response.ok) {
           throw new Error("Error en la solicitud: " + response.status);
         }
