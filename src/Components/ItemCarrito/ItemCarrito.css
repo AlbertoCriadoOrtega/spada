@@ -54,3 +54,11 @@
   transform: scale(1.2);
   transition: all 0.2s ease-in-out;
 }
+
+@media (max-width: 768px) {
+  .itemCarrito {
+    -webkit-box-shadow: 8px 8px 16px 2px rgba(0, 0, 0, 0.47);
+    -moz-box-shadow: 8px 8px 16px 2px rgba(0, 0, 0, 0.47);
+    box-shadow: 8px 8px 16px 2px rgba(0, 0, 0, 0.47);
+  }
+}

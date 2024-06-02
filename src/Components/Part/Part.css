@@ -1,8 +1,15 @@
 /* Responsive styling for #parteRecambio */
-@media (min-width: 576px) {
+@media (min-width: 300px) {
   #parteRecambio {
     max-width: calc(100% - 0.5rem);
     min-width: calc(100% - 0.5rem);
+  }
+}
+
+@media (min-width: 476px) {
+  #parteRecambio {
+    max-width: calc(47% - 0.5rem);
+    min-width: calc(47% - 0.5rem);
   }
 }
 

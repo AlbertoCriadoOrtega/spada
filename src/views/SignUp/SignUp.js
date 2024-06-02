@@ -9,10 +9,12 @@ function validacionSignUp() {
 
   let email = document.getElementById("username");
   let password = document.getElementById("password");
+  let confirmPassword = document.getElementById("passwordRepeat");
   let name = document.getElementById("name");
   let phone = document.getElementById("phone");
   let address = document.getElementById("address");
 
+  let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   let passwordRegex =
     /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{6,12}$/;
   let nameRegex = /^(?=.{6,101}$)([a-zA-Z]{1,50})\s([a-zA-Z]{1,50})$/;
@@ -21,6 +23,21 @@ function validacionSignUp() {
   if (email.value === "") {
     email.style.borderColor = "red";
     alert("El correo es un campo obligatorio");
+    validation = "false";
+  }
+  if (password.value === "") {
+    password.style.borderColor = "red";
+    alert("La contraseña es un campo obligatorio");
+    validation = "false";
+  }
+  if (password.value !== confirmPassword.value) {
+    confirmPassword.style.borderColor = "red";
+    alert("Las contraseñas no coinciden");
+    validation = "false";
+  }
+  if (!emailRegex.test(email.value)) {
+    email.style.borderColor = "red";
+    alert("El correo no cumple el formato");
     validation = "false";
   }
   if (!passwordRegex.test(password.value)) {
@@ -43,12 +60,58 @@ function validacionSignUp() {
     alert("La dirección es obligatoria");
     validation = "false";
   }
-
   if (validation === "true") {
     if (window.confirm("¿Quieres crear tu cuenta?")) {
-      window.location.replace("/");
+      crearCuenta(email, password, confirmPassword, name, phone, address);
     }
   }
+}
+
+function crearCuenta(email, password, confirmPassword, name, phone, address) {
+  let valorEmail = email.value;
+  let valorPassword = password.value;
+  let valorPasswordConfirm = confirmPassword.value;
+  let valorName = name.value;
+  let valorPhone = phone.value;
+  let valorAddress = address.value;
+
+  let bodyJSON = JSON.stringify({
+    email: valorEmail,
+    password: valorPassword,
+    password_confirmation: valorPasswordConfirm,
+    nombre: valorName,
+    telefono: valorPhone,
+    tipoUsuario: "1",
+    direccion: valorAddress,
+  });
+
+  fetch("http://127.0.0.1:8000/api/register", {
+    method: "POST",
+    body: bodyJSON,
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("El email ya existe");
+      }
+      return response.json();
+    })
+    .then((json) => {
+      alert("Cuenta creada correctamente");
+      window.location.href = "/";
+      localStorage.setItem("tokenUser", json.token);
+    })
+    .catch((error) => {
+      if (error.message.includes("400")) {
+        alert(
+          "El correo electrónico ya está en uso. Por favor, utiliza otro correo electrónico."
+        );
+      } else {
+        alert("Hubo un error al crear la cuenta, " + error.message);
+      }
+    });
 }
 
 export default function SignUp() {
@@ -72,6 +135,7 @@ export default function SignUp() {
                     id="username"
                     placeholder="introduce tu Correo"
                     required
+                    autoComplete="username"
                   ></input>
                 </div>
                 <div className="form-group col-12 mt-3">
@@ -84,11 +148,25 @@ export default function SignUp() {
                     id="password"
                     placeholder="introduce tu contraseña"
                     required
+                    autoComplete="new-password"
                   ></input>
                   <small className="ps-3">
                     De 6 a 12 caracteres alfanumericos con al menos 1 numero y
                     al menos un caracter especial
                   </small>
+                </div>
+                <div className="form-group col-12 mt-3">
+                  <label htmlFor="passwordRepeat" className="ps-3">
+                    Repite la contraseña <span className="text-danger">*</span>
+                  </label>
+                  <input
+                    type="password"
+                    className="form-control mt-1 col-12 col-md-3 col-lg-3 ps-3"
+                    id="passwordRepeat"
+                    placeholder="repite tu contraseña"
+                    required
+                    autoComplete="new-password"
+                  ></input>
                 </div>
                 <div className="form-group col-12 mt-3">
                   <label htmlFor="name" className="ps-3">

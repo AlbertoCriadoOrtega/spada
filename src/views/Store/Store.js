@@ -12,23 +12,25 @@ export default function Store() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(
-          "https://newsapi.org/v2/everything?q=e&from=2024-05-21&to=2024-05-26&sortBy=popularity&apiKey=7937fb512dde4c2dbca99daca07165cc"
-        );
+        const response = await fetch("localhost:8000c,/api/piezas");
         if (!response.ok) {
           throw new Error("Error en la solicitud: " + response.status);
         }
         const data = await response.json();
-        const productos = data.articles.map((producto, index) => (
+
+        console.log(data);
+        const piezas = data.piezas.map((pieza) => (
           <Part
-            key={index}
-            imagenURL={producto.urlToImage || "default-image-url.jpg"}
-            nombre={producto.author || "Autor desconocido"}
-            precio={producto.publishedAt || "Fecha no disponible"}
-            categoria={producto.source.name || "Fuente desconocida"}
+            key={pieza.id}
+            imagenURL={
+              "http://localhost:8000/" + pieza.imagen || "default-image-url.jpg"
+            }
+            nombre={pieza.nombre || "Nombre desconocido"}
+            precio={pieza.precio || "Precio no disponible"}
+            categoria={pieza.tipo || "Tipo desconocido"}
           />
         ));
-        setProductos(productos);
+        setProductos(piezas);
       } catch (error) {
         console.error("Hubo un problema con la solicitud Fetch:", error);
       }

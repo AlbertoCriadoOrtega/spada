@@ -20,15 +20,49 @@ function validacionLogIn() {
   }
 
   if (validation === "true") {
-    alert("validacion correcta");
+    iniciarSesion(email, password);
   }
+}
+
+function iniciarSesion(email, password) {
+  let valorEmail = email.value;
+  let valorPassword = password.value;
+  fetch("http://127.0.0.1:8000/api/login", {
+    method: "POST",
+    body: JSON.stringify({
+      email: valorEmail,
+      password: valorPassword,
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("la contraseña o el correo son incorrectos");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("session", true);
+        alert("Sesión iniciada correctamente");
+        window.location.href = "/";
+      }
+    })
+    .catch((error) => {
+      alert(error);
+      email.style.borderColor = "red";
+      password.style.borderColor = "red";
+    });
 }
 
 export default function LogIn() {
   return (
     <>
       <Navegacion />
-      <div className="d-flex justify-content-center">
+      <div className="d-flex justify-content-center fondoCreacionCuenta">
         <div className="row mt-5 mb-5 col-12 col-md-10 col-lg-6 ps-4 pe-4">
           <div className="login-container col-12">
             <h2 className="text-center mb-4">Inicio de Sesión</h2>
@@ -53,19 +87,25 @@ export default function LogIn() {
                   className="form-control mt-1 col-12 col-md-3 col-lg-3"
                   id="password"
                   placeholder="introduce tu contraseña"
+                  autoComplete="current-password"
                 ></input>
               </div>
               <div className="col-12 d-flex justify-content-center">
-                <button
+                <p
                   type="submit"
                   className="btn mt-5 col-5 col-md-3 col-lg-3"
                   id="botonLogIn"
                   onClick={validacionLogIn}
                 >
                   Accede
-                </button>
+                </p>
               </div>
             </form>
+            <div className="text-center">
+              <a className="Enfasis text-center col-12" href="/registro">
+                No tienes cuenta, registrate!
+              </a>
+            </div>
           </div>
         </div>
       </div>

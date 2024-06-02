@@ -13,6 +13,7 @@ import OurTeam from "./views/OurTeam/OurTeam";
 import Carrito from "./views/Carrito/Carrito";
 import AdminCrear from "./views/CrearProducto/CrearProducto";
 import AdminActualizar from "./views/ActualizarProducto/ActualizarProducto";
+import Pedido from "./views/Pedido/Pedido";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/carrito" element={<Carrito />} />
         <Route path="/admin/crear" element={<AdminCrear />} />
         <Route path="/admin/actualizar" element={<AdminActualizar />} />
+        <Route path="/pedido" element={<Pedido />} />
       </Routes>
     </Router>
   );

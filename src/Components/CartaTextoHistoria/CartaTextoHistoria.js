@@ -36,8 +36,6 @@ export default class CartaTextoHistoria extends Component {
 
     const backgroundImage = ArrayImagenes[decadaImagen];
 
-    console.log(backgroundImage);
-
     return (
       <div id={idDiv}>
         <div

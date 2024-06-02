@@ -1,9 +1,26 @@
 import React, { Component } from "react";
 
 import "./ItemCarrito.css";
+let calcularTotal = () => {
+  let total = 0;
+  let carrito = JSON.parse(localStorage.getItem("carrito"));
+  let totalCarrito = document.getElementById("totalCarrito");
+  for (let i = 0; i < carrito.length; i++) {
+    total += carrito[i].precio * carrito[i].cantidad;
+  }
+
+  totalCarrito.innerText = total;
+};
 
 class ItemCarrito extends Component {
   aumentarCantidad = (e) => {
+    let precio =
+      e.target.parentElement.parentElement.parentElement.children[0].children[1]
+        .children[1].children[0];
+    let total =
+      e.target.parentElement.parentElement.parentElement.children[0].children[2]
+        .children[0].children[0];
+
     let carrito = JSON.parse(localStorage.getItem("carrito"));
     let index = carrito.findIndex(
       (item) =>
@@ -12,18 +29,33 @@ class ItemCarrito extends Component {
     );
     carrito[index].cantidad++;
 
-    let cantidad =
+    let cantidadElement =
       e.target.parentElement.parentElement.parentElement.children[0].children[1]
-        .children[2].children[0].textContent;
+        .children[2].children[0];
+    cantidadElement.textContent = carrito[index].cantidad;
 
-    cantidad = parseInt(cantidad);
-    cantidad++;
-    e.target.parentElement.parentElement.parentElement.children[0].children[1].children[2].children[0].textContent =
-      cantidad;
+    total.textContent = parseInt(precio.textContent) * carrito[index].cantidad;
+
     localStorage.setItem("carrito", JSON.stringify(carrito));
+
+    let numCarritoElements = document.getElementsByClassName("numCarrito");
+    let totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+
+    for (let i = 0; i < numCarritoElements.length; i++) {
+      numCarritoElements[i].innerHTML = totalItems;
+    }
+
+    calcularTotal();
   };
 
   disminuirCantidad = (event) => {
+    let precio =
+      event.target.parentElement.parentElement.parentElement.children[0]
+        .children[1].children[1].children[0];
+    let total =
+      event.target.parentElement.parentElement.parentElement.children[0]
+        .children[2].children[0].children[0];
+
     let carrito = JSON.parse(localStorage.getItem("carrito"));
     let index = carrito.findIndex(
       (item) =>
@@ -32,24 +64,33 @@ class ItemCarrito extends Component {
     );
     carrito[index].cantidad--;
 
-    let cantidad =
+    let cantidadElement =
       event.target.parentElement.parentElement.parentElement.children[0]
-        .children[1].children[2].children[0].textContent;
+        .children[1].children[2].children[0];
+    let cantidad = parseInt(cantidadElement.textContent);
 
-    cantidad = parseInt(cantidad);
     if (cantidad - 1 === 0) {
       this.eliminarItem(event);
     } else {
       cantidad--;
-      event.target.parentElement.parentElement.parentElement.children[0].children[1].children[2].children[0].textContent =
-        cantidad;
+      cantidadElement.textContent = cantidad;
+
+      total.textContent = parseInt(precio.textContent) * cantidad;
       localStorage.setItem("carrito", JSON.stringify(carrito));
     }
 
-    //si la cesta se queda vacia vuelvo a cargar la pagina
+    let numCarritoElements = document.getElementsByClassName("numCarrito");
+    let totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+
+    for (let i = 0; i < numCarritoElements.length; i++) {
+      numCarritoElements[i].innerHTML = totalItems;
+    }
+
     if (document.getElementById("items").children.length === 0) {
       window.location.reload();
     }
+
+    calcularTotal();
   };
 
   eliminarItem = (e) => {
@@ -63,6 +104,19 @@ class ItemCarrito extends Component {
       carrito.splice(index, 1);
       localStorage.setItem("carrito", JSON.stringify(carrito));
       e.target.parentElement.parentElement.parentElement.remove();
+
+      let numCarritoElements = document.getElementsByClassName("numCarrito");
+      let totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+
+      for (let i = 0; i < numCarritoElements.length; i++) {
+        numCarritoElements[i].innerHTML = totalItems;
+      }
+
+      if (document.getElementById("items").children.length === 0) {
+        window.location.reload();
+      }
+
+      calcularTotal();
     }
   };
 
@@ -70,12 +124,12 @@ class ItemCarrito extends Component {
     const { imagen, nombre, precio, cantidad } = this.props;
     return (
       <>
-        <div className="col-12 d-flex align-items-center mt-2 mb-2">
-          <div className="col-8 d-flex align-items-center">
-            <div className="col-4">
-              <img src={imagen} className="img-fluid w-100" alt={nombre}></img>
+        <div className="col-12 d-flex align-items-center mt-2 mb-2 pb-4 flex-column flex-md-row itemCarrito">
+          <div className="col-12 col-md-8 d-flex justify-content-center justify-content-md-start align-items-center flex-wrap pb-4 pb-md-0">
+            <div className="col-8 col-sm-5 col-md-4 d-flex justify-content-center pt-5">
+              <img src={imagen} className="img-fluid" alt={nombre}></img>
             </div>
-            <div className="col-4 ps-5">
+            <div className="col-12 col-sm-7 col-md-4 ps-md-5 text-center">
               <div className="fw-bold fs-3">{nombre}</div>
               <div className="fw-normal fs-4">
                 Precio: <span className="">{precio}</span>{" "}
@@ -85,18 +139,20 @@ class ItemCarrito extends Component {
                 Cantidad: <span className="">{cantidad}</span>
               </div>
             </div>
-            <div className="col-4">
-              <p className="text-center fs-2">{precio * cantidad} €</p>
+            <div className="col-4 d-none d-md-block">
+              <p className="text-center fs-2">
+                <span>{precio * cantidad} </span>€
+              </p>
             </div>
           </div>
-          <div className="d-flex align-items-center col-2 text-center justify-content-around">
-            <div className="d-flex flex-column align-items-center align-content-center">
+          <div className="d-flex align-items-center col-8 col-md-4 text-center justify-content-around">
+            <div className=" d-flex flex-row flex-md-column align-items-center align-content-center ">
               <button
-                className="bi bi-dash fs-1 mb-3 botonMenos"
+                className="bi bi-dash fs-1 mb-md-3 ms-3 me-3 ms-md-0 me-md-0 botonMenos"
                 onClick={this.disminuirCantidad}
               ></button>
               <button
-                className="bi bi-plus fs-1 mb-3 botonMas"
+                className="bi bi-plus fs-1 mb-md-3 botonMas"
                 onClick={this.aumentarCantidad}
               ></button>
             </div>
