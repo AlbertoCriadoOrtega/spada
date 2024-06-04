@@ -3,6 +3,7 @@ import Navegacion from "../../Layouts/Header/Header";
 import Footer from "../../Layouts/Footer/Footer";
 import Part from "../../Components/Part/Part";
 import "./Store.css";
+import { min, or } from "three/examples/jsm/nodes/Nodes.js";
 
 let apiUrl = "http://localhost";
 // let urlApi = "http://34.175.58.37";
@@ -19,8 +20,6 @@ export default function Store() {
           throw new Error("Error en la solicitud: " + response.status);
         }
         const data = await response.json();
-
-        console.log(data);
         const piezas = data.piezas.map((pieza) => (
           <Part
             key={pieza.id}
@@ -41,12 +40,89 @@ export default function Store() {
     fetchData();
   }, []);
 
+  let filtrar = () => {
+    let minPrice = document.getElementById("minPrice").value;
+    let maxPrice = document.getElementById("maxPrice").value;
+    let type = document.getElementById("type").value;
+    let order = document.getElementById("order").value;
+    let name = document.getElementById("buscador").value;
+
+    if (minPrice === "") {
+      minPrice = -1;
+    }
+
+    if (maxPrice === "") {
+      maxPrice = -1;
+    }
+
+    if (type === "Selecciona una opción") {
+      type = -1;
+    }
+
+    if (name === "") {
+      name = -1;
+    }
+
+    switch (order) {
+      case "precio descendente":
+        order = "descendente";
+        break;
+
+      default:
+        order = "ascendente";
+        break;
+    }
+
+    fetch(apiUrl + ":8000/filtrado", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+      },
+      body: JSON.stringify({
+        minPrecio: minPrice,
+        maxPrecio: maxPrice,
+        tipo: type,
+        ordenacion: order,
+        nombre: name,
+      }),
+    })
+      .then((response) => {
+        if (response.status === 404) {
+        } else if (!response.ok) {
+          console.log(response.status);
+          throw new Error("Error en la solicitud: " + response.status);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        let piezas = data.piezas.map((pieza) => (
+          <Part
+            key={pieza.id}
+            imagenURL={
+              apiUrl + ":8000/" + pieza.imagen || "default-image-url.jpg"
+            }
+            nombre={pieza.nombre || "Nombre desconocido"}
+            precio={pieza.precio || " precio no disponible"}
+            categoria={pieza.tipo || "Tipo desconocido"}
+          />
+        ));
+        setProductos(piezas);
+      })
+      .catch((error) => {
+        console.error("Hubo un problema con la solicitud Fetch:", error);
+      });
+  };
+
+  useEffect(() => {
+    filtrar();
+  }, []);
+
   const productosPorPagina = 12;
-  let indexOfLastProduct = numPagina * productosPorPagina;
-  let indexOfFirstProduct = indexOfLastProduct - productosPorPagina;
+  let ultimoProductoPaginado = numPagina * productosPorPagina;
+  let primerProductoPaginado = ultimoProductoPaginado - productosPorPagina;
   let productosActuales = productos.slice(
-    indexOfFirstProduct,
-    indexOfLastProduct
+    primerProductoPaginado,
+    ultimoProductoPaginado
   );
 
   let paginar = (pageNumber) => setNumPagina(pageNumber);
@@ -54,12 +130,12 @@ export default function Store() {
     <>
       <Navegacion />
       <div className="col-12 fondoTienda">
-        {" "}
         <div className="col-12 d-flex flex-wrap justify-content-center pt-4 pb-2 ">
           <input
             className="col-8 col-sm-8 col-md-6 col-lg-4"
             type="text"
             placeholder="Buscar pieza"
+            id="buscador"
           />
         </div>
         <div className="col-12 d-flex flex-wrap justify-content-center pt-1 pb-1">
@@ -83,15 +159,16 @@ export default function Store() {
           <div className="offcanvas-body">
             <div className="mt-3">
               <h5>Precio mínimo</h5>
-              <input className="form-control"></input>
+              <input className="form-control" id="minPrice"></input>
             </div>
             <div className="mt-3">
               <h5>Precio máximo</h5>
-              <input className="form-control"></input>
+              <input className="form-control" id="maxPrice"></input>
             </div>
             <div className="mt-3">
               <h5>Tipo de pieza</h5>
-              <select className="form-select">
+              <select className="form-select" id="type">
+                <option defaultValue>Selecciona una opción</option>
                 <option>Frenos</option>
                 <option>Motores</option>
                 <option>Cristales</option>
@@ -103,7 +180,7 @@ export default function Store() {
             </div>
             <div className="mt-3">
               <h5>Ordenar</h5>
-              <select className="form-select">
+              <select className="form-select" id="order">
                 <option>Precio ascendente</option>
                 <option>Precio descendente</option>
               </select>
@@ -128,6 +205,7 @@ export default function Store() {
           length: Math.ceil(productos.length / productosPorPagina),
         }).map((_, index) => (
           <button
+            key={index}
             className=" botonPaginador me-1 mb-1"
             onClick={() => paginar(index + 1)}
           >
