@@ -3,6 +3,9 @@ import Navegacion from "../../Layouts/Header/Header";
 import Footer from "../../Layouts/Footer/Footer";
 import "./LogIn.css";
 
+let apiUrl = "http://localhost";
+// let urlApi = "http://34.175.58.37";
+
 function validacionLogIn() {
   let validation = "true";
 
@@ -27,7 +30,7 @@ function validacionLogIn() {
 function iniciarSesion(email, password) {
   let valorEmail = email.value;
   let valorPassword = password.value;
-  fetch("http://127.0.0.1:8000/api/login", {
+  fetch(apiUrl + ":8000/api/login", {
     method: "POST",
     body: JSON.stringify({
       email: valorEmail,

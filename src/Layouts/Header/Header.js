@@ -2,6 +2,15 @@ import React, { useState, useEffect } from "react";
 import "./Header.css";
 import LogoFullScreen from "../../Assets/LogoPC.svg";
 import LogoMovil from "./image/logoSVG.svg";
+import IconoUsuario from "../../Components/IconoUsuario/IconoUsuario";
+
+const rutasUsuario = () => {
+  if (localStorage.getItem("session") === "true") {
+    window.location.href = "/zona-personal";
+  } else {
+    window.location.href = "/iniciar-sesion";
+  }
+};
 
 const numCarrito = () => {
   if (localStorage.getItem("carrito") !== null) {
@@ -71,12 +80,12 @@ const Header = () => {
             </div>
           </div>
           <div className="col-md-1 d-none d-md-block d-flex justify-content-end align-content-center enlacesNav">
-            <a
-              href="/iniciar-sesion"
-              className="text-white text-decoration-none fs-5 ps-3 pe-3"
+            <div
+              onClick={rutasUsuario}
+              className="text-white text-decoration-none fs-5 ps-3 pe-3 pb-0"
             >
-              <i className="bi bi-person-fill fs-1"></i>
-            </a>
+              <IconoUsuario></IconoUsuario>
+            </div>
           </div>
           <div className="col-md-1 d-none d-md-block d-flex justify-content-end align-content-center enlacesNav">
             <a
@@ -107,18 +116,17 @@ const Header = () => {
           aria-labelledby="offcanvasRightLabel"
         >
           <div className="offcanvas-header">
-            <a
-              href="/iniciar-sesion"
+            <div
+              onClick={rutasUsuario}
               className="text-dark text-decoration-none fs-5 ps-3 pe-3"
             >
-              <i className="bi bi-person-fill fs-1"></i>
-            </a>
+              <IconoUsuario></IconoUsuario>
+            </div>
             <a
               href="/carrito"
               className="text-dark text-decoration-none fs-5 ps-3 pe-3"
             >
               <i className="bi bi-cart-fill fs-1">
-                {" "}
                 <span className="Enfasis fs-2 numCarrito">{carritoNum}</span>
               </i>
             </a>

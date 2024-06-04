@@ -4,6 +4,9 @@ import Footer from "../../Layouts/Footer/Footer";
 import "./SignUp.css";
 import IMG from "../../Assets/images/SignUp/SignUpFoto.jpg";
 
+let apiUrl = "http://localhost";
+// let urlApi = "http://34.175.58.37";
+
 function validacionSignUp() {
   let validation = "true";
 
@@ -85,7 +88,7 @@ function crearCuenta(email, password, confirmPassword, name, phone, address) {
     direccion: valorAddress,
   });
 
-  fetch("http://127.0.0.1:8000/api/register", {
+  fetch(apiUrl + ":8000/api/register", {
     method: "POST",
     body: bodyJSON,
     headers: {
@@ -94,6 +97,7 @@ function crearCuenta(email, password, confirmPassword, name, phone, address) {
   })
     .then((response) => {
       if (!response.ok) {
+        alert(response);
         throw new Error("El email ya existe");
       }
       return response.json();

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Navegacion from "../../Layouts/Header/Header";
 import Footer from "../../Layouts/Footer/Footer";
-import Filter from "../../Components/Filter/Filter";
 import Part from "../../Components/Part/Part";
 import "./Store.css";
+
+let apiUrl = "http://localhost";
+// let urlApi = "http://34.175.58.37";
 
 export default function Store() {
   const [productos, setProductos] = useState([]);
@@ -12,7 +14,7 @@ export default function Store() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch("https://localhost:8000/api/piezas");
+        const response = await fetch(apiUrl + ":8000/api/piezas");
         if (!response.ok) {
           throw new Error("Error en la solicitud: " + response.status);
         }
@@ -23,7 +25,7 @@ export default function Store() {
           <Part
             key={pieza.id}
             imagenURL={
-              "http://localhost:8000/" + pieza.imagen || "default-image-url.jpg"
+              apiUrl + ":8000/" + pieza.imagen || "default-image-url.jpg"
             }
             nombre={pieza.nombre || "Nombre desconocido"}
             precio={pieza.precio || "Precio no disponible"}
@@ -51,7 +53,73 @@ export default function Store() {
   return (
     <>
       <Navegacion />
-      <Filter />
+      <div className="col-12 fondoTienda">
+        {" "}
+        <div className="col-12 d-flex flex-wrap justify-content-center pt-4 pb-2 ">
+          <input
+            className="col-8 col-sm-8 col-md-6 col-lg-4"
+            type="text"
+            placeholder="Buscar pieza"
+          />
+        </div>
+        <div className="col-12 d-flex flex-wrap justify-content-center pt-1 pb-1">
+          <button
+            className=" botonFiltro col-4 col-sm-4 col-md-3 col-lg-2"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#filtro"
+          >
+            Filtrar
+          </button>
+        </div>
+        <div className="offcanvas offcanvas-start" tabIndex="-1" id="filtro">
+          <div className="offcanvas-header">
+            <button
+              type="button"
+              className="btn-close fs-3 text-dark fw-bold"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div className="offcanvas-body">
+            <div className="mt-3">
+              <h5>Precio mínimo</h5>
+              <input className="form-control"></input>
+            </div>
+            <div className="mt-3">
+              <h5>Precio máximo</h5>
+              <input className="form-control"></input>
+            </div>
+            <div className="mt-3">
+              <h5>Tipo de pieza</h5>
+              <select className="form-select">
+                <option>Frenos</option>
+                <option>Motores</option>
+                <option>Cristales</option>
+                <option>Diferenciales</option>
+                <option>Suspensiones</option>
+                <option>Amortiguadores</option>
+                <option>Alerones</option>
+              </select>
+            </div>
+            <div className="mt-3">
+              <h5>Ordenar</h5>
+              <select className="form-select">
+                <option>Precio ascendente</option>
+                <option>Precio descendente</option>
+              </select>
+            </div>
+          </div>
+          <div className="offcanvas-footer pt-3 d-flex justify-content-center col-12 pb-3">
+            <button
+              type="button"
+              className="btn botonFiltro col-4"
+              data-bs-dismiss="offcanvas"
+            >
+              Aplicar
+            </button>
+          </div>
+        </div>
+      </div>
       <div className="col-12 d-flex flex-wrap justify-content-center fondoTienda fondoProductos">
         {productosActuales}
       </div>

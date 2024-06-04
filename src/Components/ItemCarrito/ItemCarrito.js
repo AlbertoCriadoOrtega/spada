@@ -124,7 +124,7 @@ class ItemCarrito extends Component {
     const { imagen, nombre, precio, cantidad } = this.props;
     return (
       <>
-        <div className="col-12 d-flex align-items-center mt-2 mb-2 pb-4 flex-column flex-md-row itemCarrito">
+        <div className="col-12 d-flex align-items-center mt-2 mb-2 pb-1 flex-column flex-md-row itemCarrito">
           <div className="col-12 col-md-8 d-flex justify-content-center justify-content-md-start align-items-center flex-wrap pb-4 pb-md-0">
             <div className="col-8 col-sm-5 col-md-4 d-flex justify-content-center pt-5">
               <img src={imagen} className="img-fluid" alt={nombre}></img>
