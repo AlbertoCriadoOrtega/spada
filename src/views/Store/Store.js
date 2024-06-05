@@ -3,14 +3,24 @@ import Navegacion from "../../Layouts/Header/Header";
 import Footer from "../../Layouts/Footer/Footer";
 import Part from "../../Components/Part/Part";
 import "./Store.css";
-import { min, or } from "three/examples/jsm/nodes/Nodes.js";
 
 let apiUrl = "http://localhost";
-// let urlApi = "http://34.175.58.37";
 
 export default function Store() {
   const [productos, setProductos] = useState([]);
   const [numPagina, setNumPagina] = useState(1);
+
+  useEffect(() => {
+    const btnAplicarFiltro = document.getElementById("aplicarFiltro");
+    const buscador = document.getElementById("buscador");
+    if (btnAplicarFiltro) {
+      btnAplicarFiltro.addEventListener("click", filtrar);
+    }
+
+    if (buscador) {
+      buscador.addEventListener("keyup", filtrar);
+    }
+  }, []);
 
   useEffect(() => {
     async function fetchData() {
@@ -40,7 +50,7 @@ export default function Store() {
     fetchData();
   }, []);
 
-  let filtrar = () => {
+  async function filtrar() {
     let minPrice = document.getElementById("minPrice").value;
     let maxPrice = document.getElementById("maxPrice").value;
     let type = document.getElementById("type").value;
@@ -64,7 +74,7 @@ export default function Store() {
     }
 
     switch (order) {
-      case "precio descendente":
+      case "Precio descendente":
         order = "descendente";
         break;
 
@@ -73,7 +83,7 @@ export default function Store() {
         break;
     }
 
-    fetch(apiUrl + ":8000/filtrado", {
+    await fetch(apiUrl + ":8000/api/filtrado", {
       method: "POST",
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
@@ -88,34 +98,32 @@ export default function Store() {
     })
       .then((response) => {
         if (response.status === 404) {
+          throw new Error("Error en la solicitud: " + response.status);
         } else if (!response.ok) {
-          console.log(response.status);
           throw new Error("Error en la solicitud: " + response.status);
         }
         return response.json();
       })
       .then((data) => {
-        let piezas = data.piezas.map((pieza) => (
-          <Part
-            key={pieza.id}
-            imagenURL={
-              apiUrl + ":8000/" + pieza.imagen || "default-image-url.jpg"
-            }
-            nombre={pieza.nombre || "Nombre desconocido"}
-            precio={pieza.precio || " precio no disponible"}
-            categoria={pieza.tipo || "Tipo desconocido"}
-          />
-        ));
-        setProductos(piezas);
+        if (data !== undefined) {
+          let piezas = data.piezas.map((pieza) => (
+            <Part
+              key={pieza.id}
+              imagenURL={
+                apiUrl + ":8000/" + pieza.imagen || "default-image-url.jpg"
+              }
+              nombre={pieza.nombre || "Nombre desconocido"}
+              precio={pieza.precio || " precio no disponible"}
+              categoria={pieza.tipo || "Tipo desconocido"}
+            />
+          ));
+          setProductos(piezas);
+        }
       })
       .catch((error) => {
-        console.error("Hubo un problema con la solicitud Fetch:", error);
+        // console.error("Hubo un problema con la solicitud Fetch:", error);
       });
-  };
-
-  useEffect(() => {
-    filtrar();
-  }, []);
+  }
 
   const productosPorPagina = 12;
   let ultimoProductoPaginado = numPagina * productosPorPagina;
@@ -191,6 +199,7 @@ export default function Store() {
               type="button"
               className="btn botonFiltro col-4"
               data-bs-dismiss="offcanvas"
+              id="aplicarFiltro"
             >
               Aplicar
             </button>
