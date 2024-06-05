@@ -4,6 +4,10 @@ import Footer from "../../Layouts/Footer/Footer";
 import "./Carrito.css";
 import ItemCarrito from "../../Components/ItemCarrito/ItemCarrito";
 
+/*
+ * Calcula el total del carrito
+ * @returns {void}
+ */
 function vaciarCarrito() {
   if (window.confirm("¿Seguro que quieres vaciar el carrito?")) {
     localStorage.removeItem("carrito");
@@ -11,6 +15,10 @@ function vaciarCarrito() {
   }
 }
 
+/*
+ * te lleva a realizar el pedido
+ * @returns {void}
+ */
 function realizarPedido() {
   let carrito = JSON.parse(localStorage.getItem("carrito"));
 
@@ -38,6 +46,10 @@ function realizarPedido() {
 }
 
 export default function Carrito() {
+  /*
+   * Calcula el total del carrito
+   * @returns {void}
+   */
   let calcularTotal = () => {
     let total = 0;
     let carrito = JSON.parse(localStorage.getItem("carrito"));
@@ -59,6 +71,8 @@ export default function Carrito() {
   let items = null;
   let carrito = JSON.parse(localStorage.getItem("carrito"));
 
+  // Si el carrito no tiene elementos devuelve un aviso
+  // Si el carrito tiene elementos muestra los elementos
   if (carrito === null || carrito.length === 0) {
     window.onload = function () {
       let padre = document.getElementById("items");

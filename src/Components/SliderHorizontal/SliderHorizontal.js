@@ -2,12 +2,18 @@ import React, { useRef, useState } from "react";
 import "./SliderHorizontal.css";
 
 const SliderHorizontal = ({ children }) => {
+  // Referencias
   const refSlider = useRef(null);
+  // Estados
   const [arrastrando, setArrastrando] = useState(false);
   const [posicionInicio, setPosicionInicio] = useState(0);
   const [translateActual, setTranslateActual] = useState(0);
   const [translateAnterior, setTranslateAnterior] = useState(0);
 
+  /*
+   * funcion que se ejecuta cuando el usuario arrastra el slider
+   * @param {event} e - item desde donde se llama a la función
+   */
   const manejarTouchStart = (e) => {
     setArrastrando(true);
     setPosicionInicio(e.touches[0].clientX);
@@ -15,6 +21,10 @@ const SliderHorizontal = ({ children }) => {
     refSlider.current.style.transition = "none";
   };
 
+  /*
+   * funcion que se ejecuta cuando el usuario arrastra el slider
+   * @param {event} e - item desde donde se llama a la función
+   */
   const manejarTouchMove = (e) => {
     if (arrastrando) {
       const nuevaPosicion = e.touches[0].clientX;
@@ -24,6 +34,10 @@ const SliderHorizontal = ({ children }) => {
     }
   };
 
+  /*
+   * funcion que se ejecuta cuando el usuario deja de arrastrar el slider
+   * @param {event} e - item desde donde se llama a la función
+   */
   const manejarTouchEnd = () => {
     setArrastrando(false);
     const umbral = 100;
@@ -40,6 +54,10 @@ const SliderHorizontal = ({ children }) => {
     refSlider.current.style.transition = "transform 0.5s ease";
   };
 
+  /*
+   * funcion que se ejecuta cuando el usuario arrastra el slider
+   * @param {event} e - item desde donde se llama a la función
+   */
   const deslizarSiguiente = () => {
     const anchoTarjeta = refSlider.current.children[0].offsetWidth;
     const nuevoTranslate =
@@ -50,6 +68,10 @@ const SliderHorizontal = ({ children }) => {
     refSlider.current.style.transform = `translateX(${nuevoTranslate}px)`;
   };
 
+  /*
+   * funcion que se ejecuta cuando el usuario arrastra el slider
+   * @param {event} e - item desde donde se llama a la función
+   */
   const deslizarAnterior = () => {
     const anchoTarjeta = refSlider.current.children[0].offsetWidth;
     const nuevoTranslate =

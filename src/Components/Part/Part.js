@@ -2,7 +2,13 @@ import React, { Component } from "react";
 import "./Part.css";
 
 class Part extends Component {
+  /*
+   * Aumenta la cantidad de un item del carrito
+   * @param {event} e - item desde donde se llama a la función
+   * @returns {void}
+   */
   guardarEnCarrito = (event) => {
+    //Obtenemos el precio y el total del item
     const btnComprarArticulo = event.target;
     let divPadre = btnComprarArticulo.parentElement.parentElement;
     let nombre = divPadre.children[1].children[0].textContent.trim();
@@ -10,12 +16,14 @@ class Part extends Component {
       divPadre.children[1].children[2].children[0].children[0].textContent.trim();
     let imagen = divPadre.children[0].children[0].src;
 
+    //si el item ya existe en el carrito, aumentamos la cantidad
     let carrito = localStorage.getItem("carrito")
       ? JSON.parse(localStorage.getItem("carrito"))
       : [];
 
     let itemIndex = carrito.findIndex((item) => item.nombre === nombre);
 
+    //si el item no existe en el carrito, lo agregamos
     if (itemIndex !== -1) {
       carrito[itemIndex].cantidad += 1;
     } else {
@@ -29,6 +37,7 @@ class Part extends Component {
 
     localStorage.setItem("carrito", JSON.stringify(carrito));
 
+    //Actualizamos el numero de items
     let numCarritoElements = document.getElementsByClassName("numCarrito");
     let totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
 

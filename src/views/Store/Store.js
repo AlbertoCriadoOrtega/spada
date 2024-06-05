@@ -50,6 +50,10 @@ export default function Store() {
     fetchData();
   }, []);
 
+  /*
+   * Filtrar las piezas
+   * @returns {void}
+   */
   async function filtrar() {
     let minPrice = document.getElementById("minPrice").value;
     let maxPrice = document.getElementById("maxPrice").value;
@@ -133,7 +137,7 @@ export default function Store() {
     ultimoProductoPaginado
   );
 
-  let paginar = (pageNumber) => setNumPagina(pageNumber);
+  let paginar = (numPagina) => setNumPagina(numPagina);
   return (
     <>
       <Navegacion />
@@ -210,17 +214,20 @@ export default function Store() {
         {productosActuales}
       </div>
       <div className="pagination flex-wrap justify-content-center pt-3 pb-3 fondoTienda ">
-        {Array.from({
-          length: Math.ceil(productos.length / productosPorPagina),
-        }).map((_, index) => (
-          <button
-            key={index}
-            className=" botonPaginador me-1 mb-1"
-            onClick={() => paginar(index + 1)}
-          >
-            {index + 1}
-          </button>
-        ))}
+        {
+          // saca un array de los botones de paginacion
+          Array.from({
+            length: Math.ceil(productos.length / productosPorPagina),
+          }).map((_, index) => (
+            <button
+              key={index}
+              className=" botonPaginador me-1 mb-1"
+              onClick={() => paginar(index + 1)}
+            >
+              {index + 1}
+            </button>
+          ))
+        }
       </div>
       <Footer />
     </>

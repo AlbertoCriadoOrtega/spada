@@ -6,6 +6,10 @@ import "./LogIn.css";
 let apiUrl = "http://localhost";
 // let urlApi = "http://34.175.58.37";
 
+/*
+ * validar que los campos esten completos
+ * @returns {void}
+ */
 function validacionLogIn() {
   let validation = "true";
 
@@ -27,6 +31,10 @@ function validacionLogIn() {
   }
 }
 
+/*
+ * Inicia la sesion
+ * @returns {void}
+ */
 function iniciarSesion(email, password) {
   let valorEmail = email.value;
   let valorPassword = password.value;

@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 
 import "./ItemCarrito.css";
+
+/*
+ * Calcula el total del carrito
+ * @returns {void}
+ */
 let calcularTotal = () => {
   let total = 0;
   let carrito = JSON.parse(localStorage.getItem("carrito"));
@@ -13,7 +18,13 @@ let calcularTotal = () => {
 };
 
 class ItemCarrito extends Component {
+  /*
+   * Aumenta la cantidad de un item del carrito
+   * @param {event} e - item desde donde se llama a la función
+   * @returns {void}
+   */
   aumentarCantidad = (e) => {
+    //Obtenemos el precio y el total del item
     let precio =
       e.target.parentElement.parentElement.parentElement.children[0].children[1]
         .children[1].children[0];
@@ -21,6 +32,7 @@ class ItemCarrito extends Component {
       e.target.parentElement.parentElement.parentElement.children[0].children[2]
         .children[0].children[0];
 
+    //Aumentamos la cantidad
     let carrito = JSON.parse(localStorage.getItem("carrito"));
     let index = carrito.findIndex(
       (item) =>
@@ -29,6 +41,7 @@ class ItemCarrito extends Component {
     );
     carrito[index].cantidad++;
 
+    //Actualizamos la cantidad
     let cantidadElement =
       e.target.parentElement.parentElement.parentElement.children[0].children[1]
         .children[2].children[0];
@@ -36,8 +49,10 @@ class ItemCarrito extends Component {
 
     total.textContent = parseInt(precio.textContent) * carrito[index].cantidad;
 
+    //Guardamos el carrito
     localStorage.setItem("carrito", JSON.stringify(carrito));
 
+    //Actualizamos el numero de items
     let numCarritoElements = document.getElementsByClassName("numCarrito");
     let totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
 
@@ -48,7 +63,13 @@ class ItemCarrito extends Component {
     calcularTotal();
   };
 
+  /*
+   * Disminuye la cantidad de un item del carrito
+   * @param {event} event - item desde donde se llama a la función
+   * @returns {void}
+   */
   disminuirCantidad = (event) => {
+    //Obtenemos el precio y el total del item
     let precio =
       event.target.parentElement.parentElement.parentElement.children[0]
         .children[1].children[1].children[0];
@@ -56,6 +77,7 @@ class ItemCarrito extends Component {
       event.target.parentElement.parentElement.parentElement.children[0]
         .children[2].children[0].children[0];
 
+    //Disminuimos la cantidad
     let carrito = JSON.parse(localStorage.getItem("carrito"));
     let index = carrito.findIndex(
       (item) =>
@@ -64,11 +86,13 @@ class ItemCarrito extends Component {
     );
     carrito[index].cantidad--;
 
+    //Actualizamos la cantidad
     let cantidadElement =
       event.target.parentElement.parentElement.parentElement.children[0]
         .children[1].children[2].children[0];
     let cantidad = parseInt(cantidadElement.textContent);
 
+    //Actualizamos el total, si la cantidad es 0, eliminamos el item
     if (cantidad - 1 === 0) {
       this.eliminarItem(event);
     } else {
@@ -79,39 +103,52 @@ class ItemCarrito extends Component {
       localStorage.setItem("carrito", JSON.stringify(carrito));
     }
 
+    //Actualizamos el numero de items
     let numCarritoElements = document.getElementsByClassName("numCarrito");
     let totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
 
     for (let i = 0; i < numCarritoElements.length; i++) {
       numCarritoElements[i].innerHTML = totalItems;
     }
-
+    //si el carrito es vacio, recargamos la pagina
     if (document.getElementById("items").children.length === 0) {
       window.location.reload();
     }
 
+    //recalculamos el total
     calcularTotal();
   };
 
+  /*
+   * Elimina un item del carrito
+   * @param {event} event - item desde donde se llama a la función
+   * @returns {void}
+   */
   eliminarItem = (e) => {
     if (window.confirm("¿Seguro que quieres eliminar este articulo?")) {
       let carrito = JSON.parse(localStorage.getItem("carrito"));
+
+      //Buscamos el item
       let index = carrito.findIndex(
         (item) =>
           item.nombre ===
           e.target.parentElement.parentElement.parentElement.children[0].children[1].children[0].textContent.trim()
       );
+      //Eliminamos el item
       carrito.splice(index, 1);
       localStorage.setItem("carrito", JSON.stringify(carrito));
       e.target.parentElement.parentElement.parentElement.remove();
 
+      //Actualizamos el numero de items
       let numCarritoElements = document.getElementsByClassName("numCarrito");
       let totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
 
+      //Actualizamos el numero de items
       for (let i = 0; i < numCarritoElements.length; i++) {
         numCarritoElements[i].innerHTML = totalItems;
       }
 
+      //si el carrito es vacio, recargamos la pagina
       if (document.getElementById("items").children.length === 0) {
         window.location.reload();
       }

@@ -4,6 +4,10 @@ import LogoFullScreen from "../../Assets/LogoPC.svg";
 import LogoMovil from "./image/logoSVG.svg";
 import IconoUsuario from "../../Components/IconoUsuario/IconoUsuario";
 
+/*
+ * funcion que determina la ruta del usuario dependiendo de si se ha iniciado sesión o no
+ * @param {event} e - item desde donde se llama a la función
+ */
 const rutasUsuario = () => {
   if (localStorage.getItem("session") === "true") {
     window.location.href = "/zona-personal";
@@ -12,6 +16,9 @@ const rutasUsuario = () => {
   }
 };
 
+/*
+ * funcion que se encarga de mostrar el numero de items del carrito
+ */
 const numCarrito = () => {
   if (localStorage.getItem("carrito") !== null) {
     let carrito = JSON.parse(localStorage.getItem("carrito"));

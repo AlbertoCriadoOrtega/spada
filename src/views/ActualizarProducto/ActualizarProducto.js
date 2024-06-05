@@ -6,6 +6,11 @@ export default function ActualizarProducto() {
   const [imagePreview, setImagePreview] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  /*
+   * Previsualiza la imagen seleccionada
+   * @param {event} event - evento de seleccionar una imagen
+   * @returns {void}
+   */
   const previewImagen = (event) => {
     const input = event.target;
     const file = input.files && input.files[0]; // Ensure file is selected
@@ -22,7 +27,6 @@ export default function ActualizarProducto() {
       const width = img.width;
       const height = img.height;
 
-      // Set your desired width and height
       const desiredWidth = 600;
       const desiredHeight = 300;
 

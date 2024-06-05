@@ -4,6 +4,10 @@ import Footer from "../../Layouts/Footer/Footer";
 import ItemCompra from "../../Components/ItemCompra/ItemCompra";
 import "./Pedido.css";
 
+/*
+ * Valida los datos de la tarjeta
+ * @returns {void}
+ */
 function validarDatos() {
   let validacion = true;
   const cardNumber = document.getElementById("numeroTarjeta").value.trim();
@@ -35,6 +39,11 @@ function validarDatos() {
 
 export default function Pedido() {
   let productos = [];
+
+  /*
+   * Obtiene los productos del carrito
+   * @returns {void}
+   */
   function obtenerProductosCarrito() {
     const carrito = JSON.parse(localStorage.getItem("carrito"));
     if (carrito.lenght === 0) {
@@ -57,6 +66,11 @@ export default function Pedido() {
   }
   obtenerProductosCarrito();
   let total = 0;
+
+  /*
+   * Calcula el total del carrito
+   * @returns {void}
+   */
   function calcularTotal() {
     let carrito = JSON.parse(localStorage.getItem("carrito"));
     for (let i = 0; i < carrito.length; i++) {

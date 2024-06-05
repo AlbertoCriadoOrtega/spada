@@ -6,6 +6,10 @@ import "./PestanaUsuario.css";
 let apiUrl = "http://localhost";
 // let urlApi = "http://34.175.58.37";
 
+/*
+ * Cerrar la sesion del usuario
+ * @returns {void}
+ */
 let cerrarSesion = () => {
   fetch(apiUrl + ":8000/api/logout", {
     method: "POST",

@@ -7,6 +7,10 @@ import IMG from "../../Assets/images/SignUp/SignUpFoto.jpg";
 let apiUrl = "http://localhost";
 // let urlApi = "http://34.175.58.37";
 
+/*
+ * validar que los campos esten completos
+ * @returns {void}
+ */
 function validacionSignUp() {
   let validation = "true";
 
@@ -70,6 +74,10 @@ function validacionSignUp() {
   }
 }
 
+/*
+ * Crea la cuenta
+ * @returns {void}
+ */
 function crearCuenta(email, password, confirmPassword, name, phone, address) {
   let valorEmail = email.value;
   let valorPassword = password.value;

@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 
 export default class ItemCompra extends Component {
-  //generar props para el item de compra
-
   render() {
     return (
       <div className="col-12 col-sm-6 col-md-4 pt-2 pb-2 d-flex  flex-wrap">
