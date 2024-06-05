@@ -68,7 +68,6 @@ export default function Carrito() {
       padre.appendChild(aviso);
     };
   } else {
-    console.log(carrito);
     items = carrito.map((item, index) => (
       <ItemCarrito
         key={index}
