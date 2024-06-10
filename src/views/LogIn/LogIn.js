@@ -16,11 +16,11 @@ function validacionLogIn() {
   let email = document.getElementById("username");
   let password = document.getElementById("password");
 
-  if (email.value === "") {
+  if (email.value.trim() === "") {
     email.style.borderColor = "red";
     validation = "false";
     alert("El correo es un campo obligatorio");
-  } else if (password.value === "") {
+  } else if (password.value.trim() === "") {
     password.style.borderColor = "red";
     validation = "false";
     alert("La contraseña es un campo obligatorio");

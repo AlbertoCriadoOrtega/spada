@@ -1,85 +1,167 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navegacion from "../../Layouts/Header/Header";
 import Footer from "../../Layouts/Footer/Footer";
 import ItemCompra from "../../Components/ItemCompra/ItemCompra";
 import "./Pedido.css";
 
-/*
- * Valida los datos de la tarjeta
- * @returns {void}
- */
-function validarDatos() {
-  let validacion = true;
-  const cardNumber = document.getElementById("numeroTarjeta").value.trim();
-  const cardExpiry = document.getElementById("caducidad").value.trim();
-  const CVV = document.getElementById("CVV").value.trim();
-
-  const cardNumberRegex = /^\d{16}$/;
-  if (!cardNumberRegex.test(cardNumber)) {
-    alert("El numero de tarjeta no es válido");
-    validacion = false;
-  }
-
-  const cardExpiryRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
-  if (!cardExpiryRegex.test(cardExpiry)) {
-    alert("La fecha de vencimiento no es valida");
-    validacion = false;
-  }
-
-  const cardCvvRegex = /^\d{3,4}$/;
-  if (!cardCvvRegex.test(CVV)) {
-    alert("El CVV no es valido");
-    validacion = false;
-  }
-
-  if (validacion === true) {
-    alert("Compra correcta");
-  }
-}
+let apiUrl = "http://localhost";
+// let urlApi = "http://34.175.58.37";
 
 export default function Pedido() {
-  let productos = [];
+  let [productos, setProductos] = useState([]);
+  let [total, setTotal] = useState(0);
 
-  /*
-   * Obtiene los productos del carrito
-   * @returns {void}
-   */
+  useEffect(() => {
+    obtenerProductosCarrito();
+  }, []);
+
+  async function validarDatos() {
+    let validacion = true;
+    const cardNumber = document.getElementById("numeroTarjeta");
+    const cardExpiry = document.getElementById("caducidad");
+    const CVV = document.getElementById("CVV");
+
+    const cardNumberRegex = /^\d{16}$/;
+    if (!cardNumberRegex.test(cardNumber.value.trim())) {
+      alert("El numero de tarjeta no es válido");
+      cardNumber.style.border = "2px solid red";
+      validacion = false;
+    } else {
+      cardNumber.style.border = "2px solid black";
+    }
+
+    const cardExpiryRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
+    if (!cardExpiryRegex.test(cardExpiry.value.trim())) {
+      alert("La fecha de vencimiento no es valida");
+      cardExpiry.style.border = "2px solid red";
+      validacion = false;
+    } else {
+      cardExpiry.style.border = "2px solid black";
+    }
+
+    const cardCvvRegex = /^\d{3,4}$/;
+    if (!cardCvvRegex.test(CVV.value.trim())) {
+      CVV.style.border = "2px solid red";
+      alert("El CVV no es valido");
+      validacion = false;
+    } else {
+      CVV.style.border = "2px solid black";
+    }
+
+    if (validacion === true) {
+      await rellenarItemsPedido();
+    }
+  }
+
+  function obtenerId(name) {
+    return fetch(apiUrl + ":8000/api/filtrado", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+      },
+      body: JSON.stringify({
+        minPrecio: -1,
+        maxPrecio: -1,
+        tipo: -1,
+        ordenacion: "ascendente",
+        nombre: name,
+      }),
+    })
+      .then((response) => {
+        if (response.status === 404) {
+          throw new Error("Error en la solicitud: " + response.status);
+        } else if (!response.ok) {
+          throw new Error("Error en la solicitud: " + response.status);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (data !== undefined) {
+          return data.piezas[0].id;
+        }
+      })
+      .catch((error) => {
+        console.error("Hubo un problema con la solicitud Fetch:", error);
+      });
+  }
+
+  async function rellenarItemsPedido() {
+    let carrito = JSON.parse(localStorage.getItem("carrito"));
+    let arrayProductos = [];
+
+    for (let index = 0; index < carrito.length; index++) {
+      let idProducto = await obtenerId(carrito[index].nombre);
+      arrayProductos.push({
+        idPieza: idProducto,
+        cantidad: carrito[index].cantidad,
+      });
+    }
+
+    realizarPedido(arrayProductos);
+  }
+
+  function realizarPedido(piezas) {
+    let precio = calcularTotal();
+    fetch(apiUrl + ":8000/api/pedidos", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+        productos: piezas,
+        precio: precio,
+      }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Error en la solicitud: " + response.status);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        localStorage.removeItem("carrito");
+        alert("Tu pedido se ha realizado con éxito");
+        window.location = "/tienda";
+      })
+      .catch((error) => {
+        alert("Ha habido un error, intenta de nuevo: " + error);
+      });
+  }
+
   function obtenerProductosCarrito() {
     const carrito = JSON.parse(localStorage.getItem("carrito"));
-    if (carrito.lenght === 0) {
+    if (carrito.length === 0) {
       alert("No hay elementos en el carrito, pedido no posible");
       window.location = "/tienda";
     }
 
+    let productosArray = [];
     for (let i = 0; i < carrito.length; i++) {
       let item = (
         <ItemCompra
-          key={2}
+          key={i}
           nombre={carrito[i].nombre}
           imagen={carrito[i].imagen}
           precio={carrito[i].precio}
           cantidad={carrito[i].cantidad}
         ></ItemCompra>
       );
-      productos.push(item);
+      productosArray.push(item);
     }
+    setProductos(productosArray);
+    setTotal(calcularTotal());
   }
-  obtenerProductosCarrito();
-  let total = 0;
 
-  /*
-   * Calcula el total del carrito
-   * @returns {void}
-   */
   function calcularTotal() {
     let carrito = JSON.parse(localStorage.getItem("carrito"));
+    let total = 0;
     for (let i = 0; i < carrito.length; i++) {
       total += carrito[i].precio * carrito[i].cantidad;
     }
-
     return total;
   }
-  total = calcularTotal();
+
   return (
     <>
       <Navegacion />
@@ -96,61 +178,61 @@ export default function Pedido() {
           data-bs-toggle="modal"
           data-bs-target="#modalTarjeta"
         >
-          Realizar pedido pedido
+          Realizar pedido
         </p>
       </div>
       <div
-        class="modal fade"
+        className="modal fade"
         id="modalTarjeta"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="modalTarjetaLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="modalTarjetaLabel">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="modalTarjetaLabel">
                 Información de tu Tarjeta
               </h5>
               <button
                 type="button"
-                class="btn-close"
+                className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
               <form>
-                <div class="mb-3">
-                  <label for="numeroTarjeta" class="form-label">
+                <div className="mb-3">
+                  <label htmlFor="numeroTarjeta" className="form-label">
                     Número de Tarjeta
                   </label>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="numeroTarjeta"
                     placeholder="Número de Tarjeta"
                   ></input>
                 </div>
-                <div class="row">
-                  <div class="mb-3 col-md-6">
-                    <label for="caducidad" class="form-label">
+                <div className="row">
+                  <div className="mb-3 col-md-6">
+                    <label htmlFor="caducidad" className="form-label">
                       Fecha de Vencimiento
                     </label>
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       id="caducidad"
                       placeholder="MM/AA"
                     ></input>
                   </div>
-                  <div class="mb-3 col-md-6">
-                    <label for="CVV" class="form-label">
+                  <div className="mb-3 col-md-6">
+                    <label htmlFor="CVV" className="form-label">
                       CVV
                     </label>
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       id="CVV"
                       placeholder="CVV"
                     ></input>
@@ -158,17 +240,17 @@ export default function Pedido() {
                 </div>
               </form>
             </div>
-            <div class="modal-footer">
+            <div className="modal-footer">
               <button
                 type="button"
-                class="btn btn-secondary"
+                className="btn btn-secondary"
                 data-bs-dismiss="modal"
               >
                 Cancelar
               </button>
               <button
                 type="button"
-                class="btn btn-primary"
+                className="btn btn-primary"
                 onClick={validarDatos}
               >
                 Pagar
@@ -177,7 +259,6 @@ export default function Pedido() {
           </div>
         </div>
       </div>
-
       <Footer />
     </>
   );

@@ -1,41 +1,26 @@
 import React, { useState, useEffect } from "react";
 import Navegacion from "../../Layouts/Header/Header";
 import Footer from "../../Layouts/Footer/Footer";
-import Part from "../../Components/Part/Part";
-import "./Store.css";
+import AdminPart from "../../Components/AdminPart/AdminPart";
 
 let apiUrl = "http://localhost";
 // let apiUrl = "http://34.175.58.37";
-
-function mirarAdmin() {
-  if (localStorage.getItem("token") != null) {
-    fetch(apiUrl + ":8000/api/es-admin", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json; charset=UTF-8",
-        Authorization: `Bearer ${localStorage.getItem("token")}` || "",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.tipoUsuario === 1) {
-          window.location.href = "/admin/tienda";
-        }
-      })
-      .catch((error) => {
-        console.log("Error:", error);
-      });
-  }
-}
 
 export default function Store() {
   const [productos, setProductos] = useState([]);
   const [numPagina, setNumPagina] = useState(1);
 
-  useEffect(() => {
-    mirarAdmin();
-  }, []);
+  /*
+   * funcion que te lleva a la vista de crear producto
+   * @returns {void}
+   */
+  function CrearProducto() {
+    if (window.confirm("¿Seguro que quieres crear un nuevo producto?")) {
+      window.location = "/admin/crear";
+    }
+  }
 
+  //filtrado en la tienda de admin
   useEffect(() => {
     const btnAplicarFiltro = document.getElementById("aplicarFiltro");
     const buscador = document.getElementById("buscador");
@@ -49,6 +34,7 @@ export default function Store() {
   }, []);
 
   useEffect(() => {
+    //sacar piezas
     async function fetchData() {
       try {
         const response = await fetch(apiUrl + ":8000/api/piezas");
@@ -57,7 +43,7 @@ export default function Store() {
         }
         const data = await response.json();
         const piezas = data.piezas.map((pieza) => (
-          <Part
+          <AdminPart
             key={pieza.id}
             imagenURL={
               apiUrl + ":8000/" + pieza.imagen || "default-image-url.jpg"
@@ -137,7 +123,7 @@ export default function Store() {
       .then((data) => {
         if (data !== undefined) {
           let piezas = data.piezas.map((pieza) => (
-            <Part
+            <AdminPart
               key={pieza.id}
               imagenURL={
                 apiUrl + ":8000/" + pieza.imagen || "default-image-url.jpg"
@@ -184,6 +170,12 @@ export default function Store() {
             data-bs-target="#filtro"
           >
             Filtrar
+          </button>
+          <button
+            className="btn btn-success col-4 col-sm-4 col-md-3 col-lg-2"
+            onClick={CrearProducto}
+          >
+            Crear producto
           </button>
         </div>
         <div className="offcanvas offcanvas-start" tabIndex="-1" id="filtro">

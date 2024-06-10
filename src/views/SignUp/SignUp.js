@@ -27,42 +27,42 @@ function validacionSignUp() {
   let nameRegex = /^(?=.{6,101}$)([a-zA-Z]{1,50})\s([a-zA-Z]{1,50})$/;
   let phoneRegex = /^[0-9]{8,12}$/;
 
-  if (email.value === "") {
+  if (email.value.trim() === "") {
     email.style.borderColor = "red";
     alert("El correo es un campo obligatorio");
     validation = "false";
   }
-  if (password.value === "") {
+  if (password.value.trim() === "") {
     password.style.borderColor = "red";
     alert("La contraseña es un campo obligatorio");
     validation = "false";
   }
-  if (password.value !== confirmPassword.value) {
+  if (password.value.trim() !== confirmPassword.value) {
     confirmPassword.style.borderColor = "red";
     alert("Las contraseñas no coinciden");
     validation = "false";
   }
-  if (!emailRegex.test(email.value)) {
+  if (!emailRegex.test(email.value.trim())) {
     email.style.borderColor = "red";
     alert("El correo no cumple el formato");
     validation = "false";
   }
-  if (!passwordRegex.test(password.value)) {
+  if (!passwordRegex.test(password.value.trim())) {
     password.style.borderColor = "red";
     alert("La contraseña debe tener entre 8 y 12 caracteres");
     validation = "false";
   }
-  if (!nameRegex.test(name.value)) {
+  if (!nameRegex.test(name.value.trim())) {
     name.style.borderColor = "red";
     alert("El campo nombre no cumple con los requisitos");
     validation = "false";
   }
-  if (!phoneRegex.test(phone.value)) {
+  if (!phoneRegex.test(phone.value.trim())) {
     phone.style.borderColor = "red";
     alert("El telefono no cumple el formato");
     validation = "false";
   }
-  if (address.value === "") {
+  if (address.value.trim() === "") {
     address.style.borderColor = "red";
     alert("La dirección es obligatoria");
     validation = "false";

@@ -35,7 +35,7 @@ export default class PestanaUsuario extends Component {
       <>
         <Header></Header>
         <div className="col-12 fondoUsuario d-flex flex-column">
-          <div className="col-12">
+          <div className="col-12 pt-3">
             <div>
               <h1 className="text-center">Pestaña de usuario</h1>
             </div>
@@ -50,7 +50,10 @@ export default class PestanaUsuario extends Component {
               </p>
             </div>
             <div className="col-4 d-flex justify-content-center">
-              <a className="btn fs-2 btn-primary col-10 mb-3" href="/pedidos">
+              <a
+                className="btn fs-2 btn-primary col-10 mb-3"
+                href="/usuario/pedidos"
+              >
                 Ver pedidos
               </a>
             </div>
